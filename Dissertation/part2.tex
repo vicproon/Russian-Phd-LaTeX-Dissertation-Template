@@ -1,202 +1,114 @@
-\chapter{Длинное название главы, в которой мы смотрим на примеры того, как будут верстаться изображения и списки} \label{chapt2}
+\chapter{Эксперименты по квадратичному программированию и мягним ограничениям} \label{chapt2}
 
-\section{Одиночное изображение} \label{sect2_1}
+\section{Квадратичное программирование на изображении 8х8} \label{sect_2_1}
 
-\begin{figure}[ht] 
-  \center
-  \includegraphics [scale=0.27] {latex}
-  \caption{TeX.} 
-  \label{img:latex}  
-\end{figure}
+\todo{текст ECMS\_2015}
 
-%\newpage
-%============================================================================================================================
-\section{Длинное название параграфа, в котором мы узнаём как сделать две картинки с общим номером и названием} \label{sect2_2}
+\section{Мягкие ограничения на неравенства} \label{sect_2_2}
 
-А это две картинки под общим номером и названием:
-\begin{figure}[ht]
-  \begin{minipage}[ht]{0.49\linewidth}
-    \center{\includegraphics[width=0.5\linewidth]{knuth1} \\ а)}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[ht]{0.49\linewidth}
-    \center{\includegraphics[width=0.5\linewidth]{knuth2} \\ б)}
-  \end{minipage}
-  \caption{Очень длинная подпись к изображению, на котором представлены две фотографии Дональда Кнута}
-  \label{img:knuth}  
-\end{figure}
+Appearance of metal streak artifacts in reconstructed CT images is a known problem \cite{barrett2004artifacts, boas2012ct, nasirudin2015reduction,
+park2015computed}. Such artifacts are caused by multiple reasons, including beam hardening, scatter, Poisson noise, motion, and edge effects \cite{boas2012ct}. A variety of tricks are used to avoid these artifacts: hardware tricks including automatic control of the X-ray tube voltage and current modulations, software preprocessing of the projection data before reconstruction - sinograms are filtered using adaptive methods of filtering. For example an adaptive expansion of the detector element size in regions of photon starvation are used \cite{boas2012ct}. One more group of methods carries out measurements using a multi-energy scan \cite{bamberg2011metal}. Also there are methods in which
+the core of the reconstruction method takes into account the
+mathematical model of a sinogram formation. The statistical reconstruction techniques are used to deal with the metal artifact reduction problem \cite{jmuller2006, buzug2008computed}. Contrary to filtered back-projection group of methods, in those techniques, the influence of each single beam on the image reconstruction can be weighted separately. The maximum likelihood
+(MLEM) algorithm \cite{buzug2008computed} and modified MLEM algorithm called $\lambda$-MLEM \cite{oehler2007statistical} improve image quality comparing to pure interpolation or missing data concept \cite{amirkhanov2012evaluation}.
 
-Те~же~две картинки под~общим номером и~названием, но с автоматизированной нумерацей подрисунков посредством пакета \verb|subcaption|:
-\begin{figure}[ht]
-    \center{
-        \hfill
-        \subcaptionbox[List-of-Figures entry]{Первый подрисунок\label{img:knuth_2_1}} {\includegraphics[width=0.25\linewidth]{knuth1}}%
-        \hfill       
-        \subcaptionbox{Второй подрисунок\label{img:knuth_2_2}} {\includegraphics[width=0.25\linewidth]{knuth2}}
-        \hfill
-    }
+In this paper, we improve the results achieved in \cite{chukalinaway}. First, we provide a robust to noise and admissible to efficient optimization methods way to express the inequalities introduced in \cite{chukalinaway}. Second, we evaluate the method's performance on a simulated phantom data. The phantom data was simulated to remind a teeth with a metal object. And finally we evaluate the gain we get using the information in the inequalities against not using it at all.
 
-    Подрисуночный текст, описывающий обозначения, например. Согласно ГОСТ 2.105, пункт 4.3.1, располагается перед наименованием рисунка.
-    \caption{Очень длинная подпись к второму изображению, на котором представлены две фотографии Дональда Кнута} % Этот текст попадает в названия рисунков в списке рисунков
-    \label{img:knuth_2}
-\end{figure}
+The sections are organized as follows. Section \ref{s-approach} outlines the detail our approach to solve the problem. In Section \ref{s-phantom} the simulated phantom is presented. The obtained results are discussed in Section \ref{s-results}. Section \ref{s-conclusion} then concludes the whole paper.
 
-
-На рисунке~\ref{img:knuth_2_1} показан Дональд Кнут без головного убора. На рисунке~\ref{img:knuth_2}\subref*{img:knuth_2_2}  показан Дональд Кнут в головном уборе.
-
-%\newpage
-%============================================================================================================================
-\section{Пример вёрстки списков} \label{sect2_3}
-
-\noindent Нумерованный список:
-\begin{enumerate}
-  \item Первый пункт.
-  \item Второй пункт.
-  \item Третий пункт.
-\end{enumerate}
-
-\noindent Маркированный список:
-\begin{itemize}
-  \item Первый пункт.
-  \item Второй пункт.
-  \item Третий пункт.
-\end{itemize}
-
-\noindent Вложенные списки:
-\begin{itemize}
-  \item Имеется маркированный список.
-  \begin{enumerate}
-    \item В нём лежит нумерованный список,
-    \item в котором
-    \begin{itemize}
-      \item лежит ещё один маркированный список.
-    \end{itemize}    
-  \end{enumerate}
-\end{itemize}
-
-
-\section{Пробелы}
-
-В~русском наборе принято:
-\begin{itemize}
-    \item единицы измерения, знак процента отделять пробелами от~числа: 10~кВт, 15~\% (согласно ГОСТ 8.417, раздел 8);
-    \item $\tg 20^\circ$, но: 20~${}^\circ$C (согласно ГОСТ 8.417, раздел 8);
-    \item знак номера, параграфа отделять от~числа: №~5, \S~8;
-    \item стандартные сокращения: т.\:е., и~т.\:д., и~т.\:п.;
-    \item неразрывные пробелы в~предложениях.
-\end{itemize}
-
-\section{Математика}
-
-Русская традиция начертания греческих букв отличается от~западной. Это исправляется серией \verb|\renewcommand|.
-\begin{itemize}
-    \item[До:] $ \epsilon \ge \phi$, $\phi \leq \epsilon$, $\kappa \in \emptyset$.
-    \renewcommand{\epsilon}{\ensuremath{\varepsilon}}
-    \renewcommand{\phi}{\ensuremath{\varphi}}
-    \renewcommand{\kappa}{\ensuremath{\varkappa}}
-    \renewcommand{\le}{\ensuremath{\leqslant}}
-    \renewcommand{\leq}{\ensuremath{\leqslant}}
-    \renewcommand{\ge}{\ensuremath{\geqslant}}
-    \renewcommand{\geq}{\ensuremath{\geqslant}}
-    \renewcommand{\emptyset}{\varnothing}
-    \item[После:] $\epsilon \ge \phi$, $\phi \leq \epsilon$, $\kappa \in \emptyset$.
-\end{itemize}
-
-Кроме того, принято набирать греческие буквы вертикальными, что решается подключением пакета \verb|upgreek| (см. закомментированный блок в \verb|userpackages.tex|) и~аналогичным переопределением в преамбуле (см. закомментированный блок в \verb|userstyles.tex|).
-
-
-\section{Кавычки}
-В английском языке приняты одинарные и двойные кавычки в~виде ‘...’ и~“...”. В России приняты французские («...») и~немецкие („...“) кавычки (они называются «ёлочки» и~«лапки», соответственно). <<Лапки>> обычно используются внутри ,,ёлочек``, например, <<... наш гордый ,,Варяг``...>>.
-
-Французкие левые и правые кавычки набираются
-как лигатуры \verb|<<| и \verb|>>|, а~немецкие левые и правые кавычки набираются как лигатуры \verb|,,| и \verb|‘‘| (\verb|``|).
-
-Вместо лигатур или команд с~активным символом "\ можно использовать команды \verb|\glqq| и \verb|\grqq| для набора немецких кавычек и команды \verb|\flqq| и \verb|\frqq| для набора французских кавычек. Они определены в пакете \verb|babel|.
-
-\section{Тире}
-%  babel+pdflatex по умолчанию, в polyglossia надо включать опцией (и перекомпилировать с удалением временных файлов)
-Команда \verb|"---| используется для печати тире в тексте. Оно несколько короче английского длинного тире. Кроме того, команда задаёт небольшую жёсткую отбивку от слова, стоящего перед тире. При этом, само тире не отрывается от слова. После тире следует такая же отбивка от текста, как и перед тире. При наборе текста между словом и командой, за которым она следует, должен стоять пробел.
-
-В составных словах, таких, как <<Закон Менделеева"--~Клапейрона>>, для печати тире надо использовать команду \verb|"--~|. Она ставит более короткое, по~сравнению с~английским, тире и позволяет делать переносы во втором слове. При~наборе текста команда \verb|"--~| не отделяется пробелом от слова, за которым она следует (\verb|Менделеева"--~|). Следующее за командой слово может быть  отделено от~неё пробелом или перенесено на другую строку.
-
-Если прямая речь начинается с~абзаца, то перед началом её печатается тире командой
-\verb|"--*|. Она печатает русское тире и жёсткую отбивку нужной величины перед текстом.
-
-\section{Дефисы и переносы слов}
-%  babel+pdflatex по умолчанию, в polyglossia надо включать опцией (и перекомпилировать с удалением временных файлов)
-Для печати дефиса в~составных словах введены две команды. Команда~\verb|"~| печатает дефис и~запрещает делать переносы в~самих словах, а~команда \verb|"=| печатает дефис, оставляя \TeX ’у право делать переносы в~самих словах.
-
-В отличие от команды \verb|\-|, команда \verb|"-| задаёт место в~слове, где можно делать перенос, не~запрещая переносы и~в~других местах слова.
-
-Команда \verb|""| задаёт место в~слове, где можно делать перенос, причём дефис при~переносе в~этом месте не~ставится.
-
-Команда \verb|",| вставляет небольшой пробел после инициалов с~правом переноса в~фамилии.
-
-\section{Текст из панграмм и формул}
-
-Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг! Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен шляп (юфть) "--- вдрызг!Любя, съешь щипцы, "--- вздохнёт мэр, "--- кайф жгуч. Шеф взъярён тчк щипцы с~эхом гудбай Жюль. Эй, жлоб! Где туз? Прячь юных съёмщиц в~шкаф. Экс-граф? Плюш изъят. Бьём чуждый цен хвощ! Эх, чужак! Общий съём цен
-
-Ку кхоро адолэжкэнс волуптариа хаж, вим граэко ыкчпэтында ты. Граэкы жэмпэр льюкяльиюч квуй ку, аэквюы продыжщэт хаж нэ. Вим ку магна пырикульа, но квюандо пожйдонёюм про. Квуй ат рыквюы ёнэрмйщ. Выро аккузата вим нэ.
-\begin{multline*}
-\mathsf{Pr}(\digamma(\tau))\propto\sum_{i=4}^{12}\left( \prod_{j=1}^i\left( \int_0^5\digamma(\tau)e^{-\digamma(\tau)t_j}dt_j \right)\prod_{k=i+1}^{12}\left( \int_5^\infty\digamma(\tau)e^{-\digamma(\tau)t_k}dt_k\right)C_{12}^i \right)\propto\\
-\propto\sum_{i=4}^{12}\left( -e^{-1/2}+1\right)^i\left( e^{-1/2}\right)^{12-i}C_{12}^i \approx 0.7605,\quad \forall\tau\neq\overline{\tau}
-\end{multline*}
-Квуй ыёюз омниюм йн. Экз алёквюам кончюлату квуй, ты альяквюам ёнвидюнт пэр. Зыд нэ коммодо пробатуж. Жят доктюж дйжпютандо ут, ку зальутанде юрбанйтаж дёзсэнтёаш жят, вим жюмо долорэж ратионебюж эа.
-
-Ад ентэгры корпора жплэндидэ хаж. Эжт ат факэтэ дычэрунт пэржыкюти. Нэ нам доминг пэрчёус. Ку квюо ёужто эррэм зючкёпит. Про хабэо альбюкиюс нэ.
-\[
-\begin{pmatrix}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23}
-\end{pmatrix}
-\]
-
-\[
-\begin{vmatrix}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23}
-\end{vmatrix}
-\]
-
-\[
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23}
-\end{bmatrix}
-\]
-Про эа граэки квюаыквуэ дйжпютандо. Ыт вэл тебиквюэ дэфянятйоныс, нам жолюм квюандо мандамюч эа. Эож пауло лаудым инкедыринт нэ, пэрпэтюа форынчйбюж пэр эю. Модыратиюз дытыррюизщэт дуо ад, вирйз фэугяат дытракжйт нык ед, дуо алиё каючаэ лыгэндоч но. Эа мольлиз юрбанйтаж зигнёфэрумквюы эжт.
-
-Про мандамюч кончэтытюр ед. Трётанё прёнкипыз зигнёфэрумквюы вяш ан. Ат хёз эквюедым щуавятатэ. Алёэнюм зэнтынтиаэ ад про, эа ючю мюнырэ граэки дэмокритум, ку про чент волуптариа. Ыльит дыкоры аляквюид еюж ыт. Ку рыбюм мюндй ютенам дуо.
-\begin{align*}
-2\times 2 &= 4 & 6\times 8 &= 48 \\
-3\times 3 &= 9 & a+b &= c\\
-10 \times 65464 &= 654640 & 3/2&=1,5
-\end{align*}
-
-\begin{equation}
-\begin{aligned}
-2\times 2 &= 4 & 6\times 8 &= 48 \\
-3\times 3 &= 9 & a+b &= c\\
-10 \times 65464 &= 654640 & 3/2&=1,5
-\end{aligned}
+\section{Approach}
+\label{s-approach}
+Let us denote the distribution of the attenuation coefficient in the reconstructed volume with $x \in \mathbb{R}^m$. The $p \in \mathbb{R}^n$ denotes the projection data detected during a scan. According to Beer-Lambert law the energy, detected at the detector cell, corresponding to $i$-th ray is expressed by the formula $p_i = I_0 * \exp(-a_i^T x)$, where $I_0$ is the source intensity, and $a_i$ is the row of the projection matrix $A$ corresponding to the $i$-th ray. A standard approach to find $x$ from the projection data is to take a logarithm and solve the linear system of equations: $Ax = r$, where
+$r_i = \log(I_0) - \log(p_i)$. A standard way to get robust to noise reconstruction here is to use linear least squares:
+\begin{equation} \label{eq:lls}
+  \Norm{Ax - r}^2 \to \min\limits_{x}.
 \end{equation}
 
-Пэр йн тальэ пожтэа, мыа ед попюльо дэбетиз жкрибэнтур. Йн квуй аппэтырэ мэнандря, зыд аляквюид хабымуч корпора йн. Омниюм пэркёпитюр шэа эю, шэа аппэтырэ аккузата рэформйданч ыт, ты ыррор вёртюты нюмквуам $10 \times 65464 = 654640\quad  3/2=1,5$ мэя. Ипзум эуежмод $a+b = c$ мальюизчыт ад дуо. Ад фэюгаят пытынтёюм адвыржаряюм вяш. Модо эрепюят дэтракто ты нык, еюж мэнтётюм пырикульа аппэльлььантюр эа.
+Metal streak artifacts are caused mainly by photon starvation and noise. Mathematically it corresponds to the rays where $p_i$ is small or even zero. In latter case the logarithm is not defined and the simples way is just to ignore those rays solving instead of \eqref{eq:lls}:
+\begin{equation}
+  \label{eq:mask-lls}
+  \Norm{P(Ax - r)}^2 \to \min\limits_{x},
+\end{equation}
+where matrix $P$ takes only those coordinates of a vector, at which $p_i \neq 0$. More precisely,
+$$
+P_{i,j} = \begin{cases}
+  1, \quad\text{if $i = j$ and $p_i > 0$} \\
+  0, \quad\text{otherwise}
+  \end{cases}.
+$$
 
-Мэль ты дэлььынётё такематыш. Зэнтынтиаэ конклььюжионэмквуэ ан мэя. Вёжи лебыр квюаыквуэ квуй нэ, дуо зймюл дэлььиката ку. Ыам ку алиё путынт.
+It was suggested in \cite{chukalinaway} that even such problematic rays provide us with some information, namely that the weighted sum along such a ray has lower bound $a_i^T x > B$, for some suitable value of $B$ (for example, $B = \log I_0$), and we can use this information in a form of linear inequality constraints, solving the linear system with linear least squares approach:
+\begin{equation}
+  ||P(Ax - r)||^2 \to \min\limits_x, \quad\textrm{s.t. }  QAx \ge B,
+\end{equation}
+where $Q$ takes only those coordinates of a vector at which $p_i = 0$, opposite to the matrix $P$. Basically, $Q = E - P$, where $E$ is identity matrix.
 
-%Большая фигурная скобка только справа
-\[\left.                                                          %ВАЖНО: точка после слова left делает скобку неотображаемой
-\begin{aligned}
-2 \times x &= 4 \\
-3 \times y &= 9 \\
-10 \times 65464 &= z
-\end{aligned}\right\} \]
+This constraints being mathematically correct, are tight and are not robust against the noise in the projection data. Instead of tight constraints we propuse to use a soft version provided with a quadratic penalty method \cite{nocedal2006numerical} instead:
+\begin{equation}
+  \label{eq:soft-ineq}
+  ||P(Ax - r)||^2 + \alpha ||[QAx - B]^-||^2 \to \min\limits_x,
+\end{equation}
+where $[y]^- = \min\{0, y\}$.
 
-Конвынёры витюпырата но нам, тебиквюэ мэнтётюм позтюлант ед про. Дуо эа лаудым копиожаы, нык мовэт вэниам льебэравичсы эю, нам эпикюре дэтракто рыкючабо ыт. Вэрйтюж аккюжамюз ты шэа, дэбетиз форынчйбюж жкряпшэрит ыт прё. Ан еюж тымпор рыфэррэнтур, ючю дольор котёдиэквюэ йн. Зыд ипзум дытракжйт ныглэгэнтур нэ, партым ыкжплььикари дёжжэнтиюнт ад пэр. Мэль ты кытэрож молыжтйаы, нам но ыррор жкрипта аппарэат.
+This functional provides a soft way to enforce the inequalities on the variables, but also allows to handle noise effects more smoothly. We can regulate the effect of that smoothing by manipulating $\alpha$: the greater $\alpha$ is tighter the effect of inequalities is.
 
-\[ \frac{m_{t\vphantom{y}}^2}{L_t^2} = \frac{m_{x\vphantom{y}}^2}{L_x^2} + \frac{m_y^2}{L_y^2} + \frac{m_{z\vphantom{y}}^2}{L_z^2} \]
+The objective function \eqref{eq:soft-ineq} is convex and differentiable. We can effectively minimize it with Conjugate Gratient method (we used the implementation of this method, provided by the Python package \cite{scipy}). To speed-up computation of forward and backward tomographic projection operators we used ASTRA Toolbox \cite{palenstijn2011performance, van2015astra} which performs efficient evaluation of such operators on GPU.
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.45]{part2_img/phantom-and-projection}
+  \caption{The phantom (left) and its projection at $I_0 = 10^3$ photons (right).}
+  \label{phantom-and-projection}
+\end{figure}
 
-Вэре льаборэж тебиквюэ хаж ут. Ан пауло торквюатоз хаж, нэ пробо фэугяат такематыш шэа. Мэльёуз пэртинакёа юлламкорпэр прё ад, но мыа рыквюы конкыптам. Хёз квюот пэртинакёа эи, ельлюд трактатоз пэр ад. Зыд ед анёмал льаборэж номинави, жят ад конгуы льабятюр. Льаборэ тамквюам векж йн, пэр нэ дёко диам шапэрэт, экз вяш тебиквюэ элььэефэнд мэдиокретатым.
+\section{Simulation description}
+\label{s-phantom}
+To simulate the sinogram in $55$keV monochromatic mode we used a phantom imitating three teeth. Middle tooth contains titanium include imitating an implant (fig. \ref{phantom-and-projection}, left image). Pixel size is $0.005$cm. 2D field view size is $256 \times 256$ pixels. We used the XRayLib library \cite{brunetti2004library, schoonjans2011xraylib} to calculate the X-ray attenuation in each pixel for chosen energy. The sinogram (fig. \ref{phantom-and-projection}, right image) was calculated in a parallel scheme. We used $512$ rotation angles uniformly distributed in the interval $[0, \pi)$. The number of the detector cells is $362$, so that the diagonal of the phantom is projected on the detector without loosing any information. Such geometry choice allowed us to ignore the uniqueness of the solution issues which are related to the null-space of the projection operator and are ususally dealt with some sort of regularization techniques.
 
-Нэ про натюм фюйзчыт квюальизквюэ, аэквюы жкаывола мэль ку. Ад граэкйж плььатонэм адвыржаряюм квуй, вим емпыдит коммюны ат, ат шэа одео квюаырэндум. Вёртюты ажжынтиор эффикеэнди эож нэ, доминг лаборамюз эи ыам. Чэнзэрет мныжаркхюм экз эож, ыльит тамквюам факильизиж нык эи. Квуй ан элыктрам тинкидюнт ентырпрытаряш. Йн янвыняры трактатоз зэнтынтиаэ зыд. Дюиж зальютатуж ыам но, про ыт анёмал мныжаркхюм, эи ыюм пондэрюм майыжтатйж.
+\section{Results}
+\label{s-results}
+To study the proposed approach we generated projections for different source intensities and draw several samples of Poisson noise at each source intensity.
+
+For each projection we reconstructed the volume using Missing Data Least Squares \eqref{eq:mask-lss} and proposed Soft Inequalities Least Squares \eqref{eq:soft-ineq} approaches. The value of $\alpha$ was chosen to be equal to $50$.. The reconstructed volume was then compared to the original phantom and Mean Square Error was compute for such a pair.
+
+In the figure \ref{sample} we can see an example of such reconstructions. In absence of the information encoded in the inequalities the metal artifacts are presented and there is a strong shadow in the cental tooth, while in the left image, reconstructed with Soft Inequalities approach those artifacts are significantly reduced.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{part2_img/sample}
+  \caption{Example of reconstruction with Soft Inequalities method (left)
+    and Missing Data method (right).}
+  \label{sample}
+\end{figure}
+In the figure \ref{error-plot} we can see the plot of MSE averaged over all the samples of noise for each noise level. The inequalities provide an improvement over ignoring such data at all noise levels.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{part2_img/error-plot}
+  \caption{The MSE value with respect to noise level.}
+  \label{error-plot}
+\end{figure}
+
+\section{Conclusion}
+\label{s-conclusion}
+
+Experiments shows that the information encoded in the inequalites, introduced in \cite{chukalinaway} carries a significant information which can be used to reduce metal-like artifacts in the reconstructions. We proposed a robust way to use this information in form of panaltized objective function. The proposed functional is suitable to be minimized with an efficient numerical algorithms enabling the approach to work on mid- and large-sized data. Proved to work, the method next should be deeper with respect to sensitivity to $\alpha$ and compared against the other approaches mentioned in the introduction. It is also seems possible to leave the penalty encoding the inequality constraints, replacing the least squares functional with more statistically suitable (for example, Poisson log-likelihood, used in MLEM) data fit functional.
+
+\todo{текст ICMV\_2015}
+
+\section{параметры моделирования и восстановления} \label{sect_2_3}
+Параметры моделирования:
+\begin{itemize}
+  \item размером фантома (size, 65, 256),
+  \item количеством углов проекции (n\_angles, 90, 512), 
+  \item интенсивность пучка (i0, 1000)
+  \item энергия пучка (45 кэв)
+  \item форма фантома (три зуба и имплант-бумеранг)
+  \item материалы фантома и импланта (Ca, Au)
+  \item наличие импланта (в наличии)
+  \item размер пикселя (0.05)
+  \item наличием шума при прокеции, распределением шума (есть пуассоновский шум)
+\end{itemize}
+
+Параметры восстановления:
+\begin{itemize}
+  \item итераций 200 (где-то 300)
+  \item $\alpha$ 30 и 300
+\end{itemize}
