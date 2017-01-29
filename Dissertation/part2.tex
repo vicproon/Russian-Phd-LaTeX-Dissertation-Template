@@ -6,12 +6,6 @@
 
 \section{Мягкие ограничения на неравенства} \label{sect_2_2}
 
-Appearance of metal streak artifacts in reconstructed CT images is a known problem \cite{barrett2004artifacts, boas2012ct, nasirudin2015reduction,
-park2015computed}. Such artifacts are caused by multiple reasons, including beam hardening, scatter, Poisson noise, motion, and edge effects \cite{boas2012ct}. A variety of tricks are used to avoid these artifacts: hardware tricks including automatic control of the X-ray tube voltage and current modulations, software preprocessing of the projection data before reconstruction - sinograms are filtered using adaptive methods of filtering. For example an adaptive expansion of the detector element size in regions of photon starvation are used \cite{boas2012ct}. One more group of methods carries out measurements using a multi-energy scan \cite{bamberg2011metal}. Also there are methods in which
-the core of the reconstruction method takes into account the
-mathematical model of a sinogram formation. The statistical reconstruction techniques are used to deal with the metal artifact reduction problem \cite{jmuller2006, buzug2008computed}. Contrary to filtered back-projection group of methods, in those techniques, the influence of each single beam on the image reconstruction can be weighted separately. The maximum likelihood
-(MLEM) algorithm \cite{buzug2008computed} and modified MLEM algorithm called $\lambda$-MLEM \cite{oehler2007statistical} improve image quality comparing to pure interpolation or missing data concept \cite{amirkhanov2012evaluation}.
-
 In this paper, we improve the results achieved in \cite{chukalinaway}. First, we provide a robust to noise and admissible to efficient optimization methods way to express the inequalities introduced in \cite{chukalinaway}. Second, we evaluate the method's performance on a simulated phantom data. The phantom data was simulated to remind a teeth with a metal object. And finally we evaluate the gain we get using the information in the inequalities against not using it at all.
 
 The sections are organized as follows. Section \ref{s-approach} outlines the detail our approach to solve the problem. In Section \ref{s-phantom} the simulated phantom is presented. The obtained results are discussed in Section \ref{s-results}. Section \ref{s-conclusion} then concludes the whole paper.
