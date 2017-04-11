@@ -1,5 +1,3 @@
-
-
 % cites from part1
 
 @article{algebraic_methods,
@@ -11,28 +9,95 @@
   year={1974}
 }
 
+@article{Kaczmarz1937,
+  author = {Kaczmarz, S.},
+  journal = {Bulletin International de l'Acad\'{e}mie Polonaise des Sciences et des Lettres},
+  pages = {355--357},
+  priority = {2},
+  title = {Angen\"{a}herte Aufl\"{o}sung von Systemen linearer Gleichungen},
+  volume = {35},
+  year = {1937}
+}
+
+@article{GORDON1970471,
+  title = "Algebraic Reconstruction Techniques (ART) for three-dimensional electron microscopy and X-ray photography",
+  journal = "Journal of Theoretical Biology",
+  volume = "29",
+  number = "3",
+  pages = "471--481",
+  year = "1970",
+  issn = "0022-5193",
+  doi = "http://dx.doi.org/10.1016/0022-5193(70)90109-8",
+  url = "http://www.sciencedirect.com/science/article/pii/0022519370901098",
+  author = "Gordon, Richard and Bender, Robert and T. Herman, Gabor",
+  abstract = "We give a new method for direct reconstruction of three-dimensional objects from a few electron micrographs taken at angles which need not exceed a range of 60 degrees. The method works for totally asymmetric objects, and requires little computer time or storage. It is also applicable to X-ray photography, and may greatly reduce the exposure compared to current methods of body-section radiography."
+}
+
+@article{Wang:2016:HPM:3016078.2851163,
+ author = {Wang, Xiao and Sabne, Amit and Kisner, Sherman and Raghunathan, Anand and Bouman, Charles and Midkiff, Samuel},
+ title = {High Performance Model Based Image Reconstruction},
+ journal = {SIGPLAN Not.},
+ volume = {51},
+ number = {8},
+ month = {feb},
+ year = {2016},
+ issn = {0362-1340},
+ pages = {2:1--2:12},
+ articleno = {2},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/3016078.2851163},
+ doi = {10.1145/3016078.2851163},
+ acmid = {2851163},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {CT image reconstruction, MBIR, applications, multicore, parallel algorithm},
+} 
+
 @book{herman2013mathematical,
-  title={Mathematical Aspects of Computerized Tomography: Proceedings, Oberwolfach, February 10--16, 1980},
+  title={Mathematical Aspects of Computerized Tomography: Proceedings},
   author={Herman, Gabor T and Natterer, Frank},
   volume={8},
   year={2013},
+  pages={10--16},
   publisher={Springer Science \& Business Media}
 }
 
+@article{commercialCTemployFBP,
+  author={Xiaochuan Pan and Emil Y Sidky and Michael Vannier},
+  title={Why do commercial CT scanners still employ traditional, filtered back-projection for image reconstruction?},
+  journal={Inverse Problems},
+  volume={25},
+  number={12},
+  url={http://stacks.iop.org/0266-5611/25/i=12/a=123009},
+  year={2009},
+  abstract={Despite major advances in x-ray sources, detector arrays, gantry mechanical design and especially computer performance, one component of computed tomography (CT) scanners has remained virtually constant for the past 25 years—the reconstruction algorithm. Fundamental advances have been made in the solution of inverse problems, especially tomographic reconstruction, but these works have not been translated into clinical and related practice. The reasons are not obvious and seldom discussed. This review seeks to examine the reasons for this discrepancy and provides recommendations on how it can be resolved. We take the example of field of compressive sensing (CS), summarizing this new area of research from the eyes of practical medical physicists and explaining the disconnection between theoretical and application-oriented research. Using a few issues specific to CT, which engineers have addressed in very specific ways, we try to distill the mathematical problem underlying each of these issues with the hope of demonstrating that there are interesting mathematical problems of general importance that can result from in depth analysis of specific issues. We then sketch some unconventional CT-imaging designs that have the potential to impact on CT applications, if the link between applied mathematicians and engineers/physicists were stronger. Finally, we close with some observations on how the link could be strengthened. There is, we believe, an important opportunity to rapidly improve the performance of CT and related tomographic imaging techniques by addressing these issues.}
+}
 
+@article{GILBERTSIRT,
+  title = "Iterative methods for the three-dimensional reconstruction of an object from projections",
+  journal = "Journal of Theoretical Biology",
+  volume = "36",
+  number = "1",
+  pages = "105--117",
+  year = "1972",
+  issn = "0022-5193",
+  doi = "http://dx.doi.org/10.1016/0022-5193(72)90180-4",
+  url = "http://www.sciencedirect.com/science/article/pii/0022519372901804",
+  author = "Gilbert, Peter"
+}
 
 @article{sart,
-author = {A. H. Andersen and A. C. Kak},
-title = {Simultaneous Algebraic Reconstruction Technique (SART): A Superior Implementation of the Art Algorithm},
-journal = {Ultrasonic Imaging},
-volume = {6},
-number = {1},
-pages = {81-94},
-year = {1984},
-doi = {10.1177/016173468400600107},
-URL = {http://dx.doi.org/10.1177/016173468400600107},
-eprint = {http://dx.doi.org/10.1177/016173468400600107},
-    abstract = { In this paper we have discussed what appears to be a superior implementation of the Algebraic Reconstruction Technique (ART). The method is based on 1) simultaneous application of the error correction terms as computed by ART for all rays in a given projection; 2) longitudinal weighting of the correction terms back-distributed along the rays; and 3) using bilinear elements for discrete approximation to the ray integrals of a continuous image. Since this implementation generates a good reconstruction in only one iteration, it also appears to have a computational advantage over the more traditional implementation of ART. Potential applications of this implementation include image reconstruction in conjunction with ray tracing for ultrasound and microwave tomography in which the curved nature of the rays leads to a non-uniform ray density across the image. }
+  author = {A. H. Andersen and A. C. Kak},
+  title = {Simultaneous Algebraic Reconstruction Technique (SART): A Superior Implementation of the Art Algorithm},
+  journal = {Ultrasonic Imaging},
+  volume = {6},
+  number = {1},
+  pages = {81--94},
+  year = {1984},
+  doi = {10.1177/016173468400600107},
+  URL = {http://dx.doi.org/10.1177/016173468400600107},
+  eprint = {http://dx.doi.org/10.1177/016173468400600107},
+  abstract = { In this paper we have discussed what appears to be a superior implementation of the Algebraic Reconstruction Technique (ART). The method is based on 1) simultaneous application of the error correction terms as computed by ART for all rays in a given projection; 2) longitudinal weighting of the correction terms back-distributed along the rays; and 3) using bilinear elements for discrete approximation to the ray integrals of a continuous image. Since this implementation generates a good reconstruction in only one iteration, it also appears to have a computational advantage over the more traditional implementation of ART. Potential applications of this implementation include image reconstruction in conjunction with ray tracing for ultrasound and microwave tomography in which the curved nature of the rays leads to a non-uniform ray density across the image. }
 }
 
 
@@ -78,10 +143,6 @@ eprint = {http://dx.doi.org/10.1177/016173468400600107},
   publisher={ACM}
 }
 
-
-% cites from part2
-% in sokolov.bib
-
 @misc{xraylib,
   author       = {Schoonjans, Tom and
                   Brunetti, Antonio and
@@ -95,4 +156,126 @@ eprint = {http://dx.doi.org/10.1177/016173468400600107},
   year         = {2014},
   doi          = {10.5281/zenodo.12378},
   url          = {https://doi.org/10.5281/zenodo.12378}
+}
+
+@book{buzug2008computed,
+  title={Computed Tomography: From Photon Statistics to Modern Cone-Beam CT},
+  author={Buzug, T.M.},
+  isbn={9783540394082},
+  lccn={2007943070},
+  url={https://books.google.ru/books?id=fNH1fSnjwrkC},
+  year={2008},
+  publisher={Springer Berlin Heidelberg}
+}
+
+@Article{sirt_less_artifacts,
+  author="Pontana, Fran{\c{c}}ois
+  and Pagniez, Julien
+  and Flohr, Thomas
+  and Faivre, Jean-Baptiste
+  and Duhamel, Alain
+  and Remy, Jacques
+  and Remy-Jardin, Martine",
+  title="Chest computed tomography using iterative reconstruction vs filtered back projection (Part 1): evaluation of image noise reduction in 32 patients",
+  journal="European Radiology",
+  year="2011",
+  volume="21",
+  number="3",
+  pages="627--635",
+  abstract="To assess noise reduction achievable with an iterative reconstruction algorithm.",
+  issn="1432-1084",
+  doi="10.1007/s00330-010-1990-5",
+  url="http://dx.doi.org/10.1007/s00330-010-1990-5"
+}
+
+@INPROCEEDINGS{buz2011cuda,
+  author={Buzmakov, A. and Nikolaev, D. and Chukalina, M. and Schaefer, G.},
+  booktitle={2011 Annual International Conference of the IEEE Engineering in Medicine and Biology Society},
+  title={Efficient and effective regularised ART for computed tomography},
+  year={2011},
+  pages={6200-6203},
+  doi={10.1109/IEMBS.2011.6091531},
+  ISSN={1094-687X}
+}
+
+@article{Herman1979bh,
+  author={Herman, G.~T.},
+  title={Correction for beam hardening in computed tomography},
+  journal={Physics in Medicine and Biology},
+  volume={24},
+  number={1},
+  pages={81},
+  url={http://stacks.iop.org/0031-9155/24/i=1/a=008},
+  year={1979},
+  abstract={The author investigates how one can estimate the total attenuation, p, of a polyenergetic X-ray beam what the total attenuation, m, of a monoenergetic beam would have been along the same ray. He finds that for beams with typical diagnostic X-ray spectra passing through the human body one can find a simple function f such that f(p) is a sufficiently close estimate of m to allow good reconstructions. He also finds that m cannot be accurately estimated from p based on the assumption that the human body consists of water alone. The author's results are demonstrated by reconstructions of a mathematical model of a cross-section of the human thorax. The article is self-contained and includes in its Appendices a detailed discussion of the mathematical nature of the problem of beam hardening in computed tomography.}
+}
+
+@article{graser2009dual,
+  title={Dual energy CT: preliminary observations and potential clinical applications in the abdomen},
+  author={Graser, Anno and Johnson, Thorsten RC and Chandarana, Hersh and Macari, Michael},
+  journal={European radiology},
+  volume={19},
+  number={1},
+  pages={13},
+  year={2009},
+  publisher={Springer}
+}
+
+@article{dewulf2012sense,
+  title={Sense and non-sense of beam hardening correction in CT metrology},
+  author={Dewulf, Wim and Tan, Ye and Kiekens, Kim},
+  journal={CIRP Annals-Manufacturing Technology},
+  volume={61},
+  number={1},
+  pages={495--498},
+  year={2012},
+  publisher={Elsevier}
+}
+
+@article{krumm2008reducing,
+  title={Reducing non-linear artifacts of multi-material objects in industrial 3D computed tomography},
+  author={Krumm, M and Kasperl, S and Franz, M},
+  journal={Ndt \& E International},
+  volume={41},
+  number={4},
+  pages={242--251},
+  year={2008},
+  publisher={Elsevier}
+}
+
+@article{stenner2010dynamic,
+  title={Dynamic iterative beam hardening correction (DIBHC) in myocardial perfusion imaging using contrast-enhanced computed tomography},
+  author={Stenner, Philip and Schmidt, Bernhard and Allmendinger, Thomas and Flohr, Thomas and Kachelrie, Marc},
+  journal={Investigative radiology},
+  volume={45},
+  number={6},
+  pages={314--323},
+  year={2010},
+  publisher={LWW}
+}
+
+@article{van2011iterative,
+  title={Iterative correction of beam hardening artifacts in CT},
+  author={Van Gompel, Gert and Van Slambrouck, Katrien and Defrise, Michel and Batenburg, K Joost and de Mey, Johan and Sijbers, Jan and Nuyts, Johan},
+  journal={Medical physics},
+  volume={38},
+  number={S1},
+  year={2011},
+  publisher={Wiley Online Library}
+}
+
+@article{brabant2012novel,
+  title={A novel beam hardening correction method requiring no prior knowledge, incorporated in an iterative reconstruction algorithm},
+  author={Brabant, Loes and Pauwels, Elin and Dierick, Manuel and Van Loo, Denis and Boone, MA and Van Hoorebeke, Luc},
+  journal={Ndt \& E International},
+  volume={51},
+  pages={68--73},
+  year={2012},
+  publisher={Elsevier}
+}
+
+@article{tan2012beam,
+  title={Beam hardening correction and its influence on the measurement accuracy and repeatability for CT dimensional metrology applications},
+  author={Tan, Ye and Kiekens, Kim and Welkenhuyzen, Frank and Kruth, Jean-Pierre and Dewulf, Wim},
+  year={2012}
 }

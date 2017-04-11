@@ -11,24 +11,6 @@
 \begin{comment}
 % перенесено в introduction.tex
 Задача компьютерной томографии заключается в восстановлении коэффициента ослабления рентгеновского излучения объекта $f$ по проекционным данным $p$. Исследуемый объект просвечивается рентгеновским излучением интенсивности $I_0$ под различными проекционными углами (рис. \ref{fig:experiment})
-
-Бесконечно тонкий рентгеновский луч, проходящий под углом $\varphi$  через объект на расстоянии $\xi$  от начала координат, описывается выражением
-\begin{equation}\notag
-  x\cos\varphi + y\sin\varphi = \xi.
-\end{equation}
-Тогда регистрируемый сигнал имеет вид
-\begin{equation}\notag
-  I(\varphi, \xi) = I_0 \exp\left( {-\iint \! \mathrm d x \mathrm d y f(x,y)\delta(x\cos\varphi + y\sin\varphi - \xi)}\right).
-\end{equation}
-Обозначив
-\begin{equation}\notag
-  p(\varphi, \xi) = \ln \left (\frac{I_0}{I(\varphi, \xi)} \right),
-\end{equation}
-получим преобразование Радона функции $f(x,y)$:
-\begin{equation}\notag
-  p(\varphi, \xi)= \iint \! \mathrm d x \mathrm d y f(x,y)\delta(x\cos\varphi + y\sin\varphi - \xi).
-\end{equation}
-Суть задачи реконструкции в томографии --- восстановление двумерной функции сечения объекта по набору ее линейных интегралов вдоль направлений, соответствующих проекционным углам, по набору проекций, или обращение преобразования Радона.
 \end{comment}
 
 \subsection{Алгебраический подход}
