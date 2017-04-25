@@ -1,6 +1,10 @@
 \chapter{Эксперименты по квадратичному программированию и мягним ограничениям} \label{chapt2}
 
-\section{Квадратичное программирование на изображении 8х8} \label{sect_2_1}
+\section{Компьютерная томография как задача квадратичного программирования} \label{sect_2_1}
+
+\section{Описание образца} \label{sect_2_1_1}
+
+\section{Результаты} \label{sect_2_1_2}
 
 \todo{текст ECMS\_2015}
 
@@ -10,7 +14,7 @@ In this paper, we improve the results achieved in \cite{chukalinaway}. First, we
 
 The sections are organized as follows. Section \ref{s-approach} outlines the detail our approach to solve the problem. In Section \ref{s-phantom} the simulated phantom is presented. The obtained results are discussed in Section \ref{s-results}. Section \ref{s-conclusion} then concludes the whole paper.
 
-\section{Approach}
+% \section{Описание подхода}
 \label{s-approach}
 Let us denote the distribution of the attenuation coefficient in the reconstructed volume with $x \in \mathbb{R}^m$. The $p \in \mathbb{R}^n$ denotes the projection data detected during a scan. According to Beer-Lambert law the energy, detected at the detector cell, corresponding to $i$-th ray is expressed by the formula $p_i = I_0 * \exp(-a_i^T x)$, where $I_0$ is the source intensity, and $a_i$ is the row of the projection matrix $A$ corresponding to the $i$-th ray. A standard approach to find $x$ from the projection data is to take a logarithm and solve the linear system of equations: $Ax = r$, where
 $r_i = \log(I_0) - \log(p_i)$. A standard way to get robust to noise reconstruction here is to use linear least squares:
@@ -54,11 +58,11 @@ The objective function \eqref{eq:soft-ineq} is convex and differentiable. We can
   \label{phantom-and-projection}
 \end{figure}
 
-\section{Simulation description}
+\section{Описание образца}
 \label{s-phantom}
 To simulate the sinogram in $55$keV monochromatic mode we used a phantom imitating three teeth. Middle tooth contains titanium include imitating an implant (fig. \ref{phantom-and-projection}, left image). Pixel size is $0.005$cm. 2D field view size is $256 \times 256$ pixels. We used the XRayLib library \cite{brunetti2004library, schoonjans2011xraylib} to calculate the X-ray attenuation in each pixel for chosen energy. The sinogram (fig. \ref{phantom-and-projection}, right image) was calculated in a parallel scheme. We used $512$ rotation angles uniformly distributed in the interval $[0, \pi)$. The number of the detector cells is $362$, so that the diagonal of the phantom is projected on the detector without loosing any information. Such geometry choice allowed us to ignore the uniqueness of the solution issues which are related to the null-space of the projection operator and are ususally dealt with some sort of regularization techniques.
 
-\section{Results}
+\section{Результаты}
 \label{s-results}
 To study the proposed approach we generated projections for different source intensities and draw several samples of Poisson noise at each source intensity.
 
@@ -80,14 +84,12 @@ In the figure \ref{error-plot} we can see the plot of MSE averaged over all the 
   \label{error-plot}
 \end{figure}
 
-\section{Conclusion}
+\section{Выводы}
 \label{s-conclusion}
 
 Experiments shows that the information encoded in the inequalites, introduced in \cite{chukalinaway} carries a significant information which can be used to reduce metal-like artifacts in the reconstructions. We proposed a robust way to use this information in form of panaltized objective function. The proposed functional is suitable to be minimized with an efficient numerical algorithms enabling the approach to work on mid- and large-sized data. Proved to work, the method next should be deeper with respect to sensitivity to $\alpha$ and compared against the other approaches mentioned in the introduction. It is also seems possible to leave the penalty encoding the inequality constraints, replacing the least squares functional with more statistically suitable (for example, Poisson log-likelihood, used in MLEM) data fit functional.
 
-\todo{текст ICMV\_2015}
-
-\section{параметры моделирования и восстановления} \label{sect_2_3}
+\subsection{параметры моделирования и восстановления} \label{sect_2_3}
 Параметры моделирования:
 \begin{itemize}
   \item размером фантома (size, 65, 256),
