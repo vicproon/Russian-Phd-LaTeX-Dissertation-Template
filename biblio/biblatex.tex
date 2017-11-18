@@ -1,7 +1,8 @@
 %%% Реализация библиографии пакетами biblatex и biblatex-gost с использованием движка biber %%%
 
-%\usepackage{csquotes} % biblatex рекомендует его подключать. Пакет для оформления сложных блоков цитирования.
+\usepackage{csquotes} % biblatex рекомендует его подключать. Пакет для оформления сложных блоков цитирования.
 %%% Загрузка пакета с основными настройками %%%
+\makeatletter
 \ifnumequal{\value{draft}}{0}{% Чистовик
 \usepackage[%
 backend=biber,% движок
@@ -15,7 +16,10 @@ defernumbers=true,% нумерация проставляется после д�
 sortcites=true,% сортировать номера затекстовых ссылок при цитировании (если в квадратных скобках несколько ссылок, то отображаться будут отсортированно, а не абы как)
 doi=false,% Показывать или нет ссылки на DOI
 isbn=false,% Показывать или нет ISBN, ISSN, ISRN
-]{biblatex}[2016/09/17]%
+]{biblatex}[2016/09/17]
+\ltx@iffilelater{biblatex-gost.def}{2017/05/03}%
+{\toggletrue{bbx:gostbibliography}%
+\renewcommand*{\revsdnamepunct}{\addcomma}}{}
 }{%Черновик
 \usepackage[%
 backend=biber,% движок
@@ -23,6 +27,31 @@ bibencoding=utf8,% кодировка bib файла
 sorting=none,% настройка сортировки списка литературы
 ]{biblatex}[2016/09/17]%
 }
+\makeatother
+
+\ifnumgreater{\value{usefootcite}}{0}{
+    \ExecuteBibliographyOptions{autocite=footnote}
+    \newbibmacro*{cite:full}{%
+        \printtext[bibhypertarget]{%
+            \usedriver{%
+                \DeclareNameAlias{sortname}{default}%
+            }{%
+                \thefield{entrytype}%
+            }%
+        }%
+        \usebibmacro{shorthandintro}%
+    }
+    \DeclareCiteCommand{\smartcite}[\mkbibfootnote]{%
+        \usebibmacro{prenote}%
+    }{%
+        \usebibmacro{citeindex}%
+        \usebibmacro{cite:full}%
+    }{%
+        \multicitedelim%
+    }{%
+        \usebibmacro{postnote}%
+    }
+}{}
 
 %%% Подключение файлов bib %%%
 \addbibresource[label=other]{biblio/othercites.bib}
@@ -167,6 +196,8 @@ sorting=none,% настройка сортировки списка литера
 %}{}
 %\DeclareFieldFormat{title}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия работы
 %\DeclareFieldFormat{journaltitle}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия журнала
+%%% Тире как разделитель в библиографии традиционной руской длины:
+\renewcommand*{\newblockpunct}{\addperiod\addnbspace\cyrdash\space\bibsentence}
 %%% Убрать тире из разделителей элементов в библиографии:
 %\renewcommand*{\newblockpunct}{%
 %    \addperiod\space\bibsentence}%block punct.,\bibsentence is for vol,etc.
@@ -188,11 +219,17 @@ sorting=none,% настройка сортировки списка литера
 %}
 
 %%% Исправление длины тире в диапазонах %%%
-%\DefineBibliographyExtras{russian}{%
-%  \protected\def\bibrangedash{%
-%    \textendash\penalty\value{abbrvpenalty}}% almost unbreakable dash
-%  \protected\def\bibdaterangesep{\bibrangedash}%тире для дат
-%}
+% \cyrdash --- тире «русской» длины, \textendash --- en-dash
+\DefineBibliographyExtras{russian}{%
+  \protected\def\bibrangedash{%
+    \cyrdash\penalty\value{abbrvpenalty}}% almost unbreakable dash
+  \protected\def\bibdaterangesep{\bibrangedash}%тире для дат
+}
+\DefineBibliographyExtras{english}{%
+  \protected\def\bibrangedash{%
+    \cyrdash\penalty\value{abbrvpenalty}}% almost unbreakable dash
+  \protected\def\bibdaterangesep{\bibrangedash}%тире для дат
+}
 
 %Set higher penalty for breaking in number, dates and pages ranges
 \setcounter{abbrvpenalty}{10000} % default is \hyphenpenalty which is 12
@@ -303,6 +340,9 @@ sorting=none,% настройка сортировки списка литера
 \printbibliography[heading=counter,env=counter,keyword=bibliofull,section=0]
 }
 
+\newcommand*{\insertbiblioauthorcited}{
+\printbibliography[heading=authorpublications,keyword=biblioauthor,section=0,title=\authorbibtitle]
+}
 \newcommand*{\insertbiblioauthor}{
 \printbibliography[heading=authorpublications,keyword=biblioauthor,section=1,title=\authorbibtitle]
 }
