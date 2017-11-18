@@ -56,11 +56,11 @@
 %Выравнивание строк с самим названием таблицы
 \setcounter{tabtita}{1}             % 0 --- по левому краю; 1 --- по центру; 2 --- по правому краю
 %Разделитель записи «Таблица #» и названия таблицы
-\newcommand{\tablabelsep}{ }
+\newcommand{\tablabelsep}{space}   % space = пробел, period = точка (определены в подключенных пакетах)
 
 %% Подпись рисунков
 %Разделитель записи «Рисунок #» и названия рисунка
-\newcommand{\figlabelsep}{~\cyrdash\ } % (ГОСТ 2.105, 4.3.1) % "--- здесь не работает
+\newcommand{\figlabelsep}{emdash}   % emdash = тире, определён в common/styles; period = точка определён в подключенных пакетах
 
 %%% Цвета гиперссылок %%%
 % Latex color definitions: http://latexcolor.com/
@@ -70,3 +70,5 @@
 %\definecolor{linkcolor}{rgb}{0,0,0} %black
 %\definecolor{citecolor}{rgb}{0,0,0} %black
 %\definecolor{urlcolor}{rgb}{0,0,0} %black
+\setcounter{bibliosel}{1}
+
