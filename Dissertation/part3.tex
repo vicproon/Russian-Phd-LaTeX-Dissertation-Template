@@ -209,20 +209,34 @@ Q(c) = \left(\frac{I(c) - t}{S}\right)^2,
 Для восстановления были использованы модельные данные (фантом), состоящий из двух овальных областей, имеющих пересечение и состоящих из элементов номер 22 и 28.
 Распределения концентраций элементов представлены на рисунке \ref{fig:white_phantom}
 
+%\begin{figure}
+%\begin{subfigure}[h]{0.45\textwidth}
+%  \centering
+%    \includegraphics[width=\textwidth]{part3_img/c_22}
+%  $c_22$
+%\end{subfigure}
+%\begin{subfigure}[h]{0.45\textwidth}
+%  \centering
+%    \includegraphics[width=\textwidth]{part3_img/c_28}
+%  $c_28$
+%\end{subfigure}
+%  \caption{Используемые для симуляций концентрации}
+%\label{fig:white_phantom}
+%\end{figure}
+
 \begin{figure}
-\begin{subfigure}[h]{0.45\textwidth}
   \centering
-    \includegraphics[width=\textwidth]{part3_img/c_22}
-  $c_22$
-\end{subfigure}
-\begin{subfigure}[h]{0.45\textwidth}
-  \centering
-    \includegraphics[width=\textwidth]{part3_img/c_28}
-  $c_28$
-\end{subfigure}
+\begin{tabular}{@{}c@{}c}
+    \includegraphics[width=0.45\textwidth]{part3_img/c_22}
+  &
+    \includegraphics[width=0.45\textwidth]{part3_img/c_28}
+  \\
+    $c_22$ & $c_28$
+\end{tabular}
   \caption{Используемые для симуляций концентрации}
 \label{fig:white_phantom}
 \end{figure}
+
 
 На рисунке \ref{fig:source} представлены спектры поглащения элементов и спектр испускания выбранного для симуляций источника.
 

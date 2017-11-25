@@ -270,23 +270,40 @@ pattern_j[i] = i_1(\hat{j} + j_n)+  pattern_{\hat{j}}[\tilde{i}] = \dots =\sum_{
 Было исследовано и количество итераций до достижения наперед заданной среднеквадратичной ошибки синограммы в зависимости от размера восстанавливаемого изображения (см. рис. \ref{fig:ris5},a).
 Исследуемая величина уменьшается с увеличением размера, так как при большем размере изображения-фантома полное количество углов в БПХ становится больше, т. е. появляется возможность измерить более точную синограмму модели.
 
-\begin{figure}
-\begin{subfigure}[h]{0.45\textwidth}
-  \centering
-    \includegraphics[width=\textwidth]{part1_img/it_till_stop}
-    Линейный размер изображения
-\label{fig:it_till_stop}
-\end{subfigure}
+% \begin{figure}
+% \begin{subfigure}[h]{0.45\textwidth}
+%   \centering
+%     \includegraphics[width=\textwidth]{part1_img/it_till_stop}
+%     Линейный размер изображения
+% \label{fig:it_till_stop}
+% \end{subfigure}
+% 
+% \begin{subfigure}[h]{0.45\textwidth}
+%   \centering
+%     \includegraphics[width=\textwidth]{part1_img/median_correct}
+%   Степень разрежения
+% \label{fig:median_reg}
+% \end{subfigure}
+%   \caption{Количество итераций до останова.}
+% \label{fig:ris5}
+% \end{figure}
 
-\begin{subfigure}[h]{0.45\textwidth}
+\begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{part1_img/median_correct}
-  Степень разрежения
-\label{fig:median_reg}
-\end{subfigure}
+\begin{tabular}{@{}c@{}c}
+    \includegraphics[width=0.45\textwidth]{part1_img/it_till_stop}
+&
+    \includegraphics[width=0.45\textwidth]{part1_img/median_correct}
+\\	
+	\small a) Линейный размер изображения    
+&
+    \small b) Степень разрежения
+\end{tabular}
   \caption{Количество итераций до останова.}
 \label{fig:ris5}
 \end{figure}
+
+
 
 Критерием останова в этом и в других экспериментах было достижение некоторой наперед заданной ошибки в преобразовании Хафа по среднеквадратичной метрике:
 
@@ -317,25 +334,40 @@ pattern_j[i] = i_1(\hat{j} + j_n)+  pattern_{\hat{j}}[\tilde{i}] = \dots =\sum_{
 \end{equation}
 где через $f^\text{фантом}_j$ обозначен пиксель идеального изображения, а через $f_j$ --- пиксель текущего.
 
-\begin{figure}
-\begin{subfigure}[h]{0.45\textwidth}
-\centering
-  \caption{}
-    \includegraphics[width=\textwidth]{part1_img/raw}
-\label{fig:conv_raw}
-\end{subfigure}
-~
-\begin{subfigure}[h]{0.45\textwidth}
-  \centering
-  \caption{}
-    \includegraphics[width= \textwidth]{part1_img/medk}
-\label{fig:conv_med}
-\end{subfigure}
-  \caption{Зависимость среднеквадратичной ошибки изображения от числа итераций.}
+%\begin{figure}
+%\begin{subfigure}[h]{0.45\textwidth}
+%\centering
+%  \caption{}
+%    \includegraphics[width=\textwidth]{part1_img/raw}
+%\label{fig:conv_raw}
+%\end{subfigure}
+%~
+%\begin{subfigure}[h]{0.45\textwidth}
 %  \centering
+%  \caption{}
+%    \includegraphics[width= \textwidth]{part1_img/medk}
+%\label{fig:conv_med}
+%\end{subfigure}
+%  \caption{Зависимость среднеквадратичной ошибки изображения от числа итераций.}
+%%  \centering
+%Число рядом с кривой соответствует степени разрежения. а --- Без регуляризации, б --- Медианная регуляризация.
+%\label{fig:conv_all}
+%\end{figure}
+
+\begin{figure}
+\centering
+\begin{tabular}{@{}c@{}c}
+    \includegraphics[width=0.45\textwidth]{part1_img/raw}
+&
+    \includegraphics[width=0.45\textwidth]{part1_img/medk}
+\\
+   \small a) & \small b)
+\end{tabular}
+  \caption{Зависимость среднеквадратичной ошибки изображения от числа итераций.}
 Число рядом с кривой соответствует степени разрежения. а --- Без регуляризации, б --- Медианная регуляризация.
 \label{fig:conv_all}
 \end{figure}
+
 
 \section{Пространство проекции БПХ}
 Данный раздел посвящен исследованию свойства пространства проекций вдоль дискретных лучей-ступенек, или БПХ-пространство. 
