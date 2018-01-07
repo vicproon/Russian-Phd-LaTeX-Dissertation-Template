@@ -149,7 +149,7 @@ To simulate the sinogram in $55$keV monochromatic mode we used a phantom imitati
 \label{s-results}
 To study the proposed approach we generated projections for different source intensities and draw several samples of Poisson noise at each source intensity.
 
-For each projection we reconstructed the volume using Missing Data Least Squares \eqref{eq:mask-lss} and proposed Soft Inequalities Least Squares \eqref{eq:soft-ineq} approaches. The value of $\alpha$ was chosen to be equal to $50$.. The reconstructed volume was then compared to the original phantom and Mean Square Error was compute for such a pair.
+For each projection we reconstructed the volume using Missing Data Least Squares \eqref{eq:mask-lls} and proposed Soft Inequalities Least Squares \eqref{eq:soft-ineq} approaches. The value of $\alpha$ was chosen to be equal to $50$.. The reconstructed volume was then compared to the original phantom and Mean Square Error was compute for such a pair.
 
 In the figure \ref{sample} we can see an example of such reconstructions. In absence of the information encoded in the inequalities the metal artifacts are presented and there is a strong shadow in the cental tooth, while in the left image, reconstructed with Soft Inequalities approach those artifacts are significantly reduced.
 \begin{figure}
