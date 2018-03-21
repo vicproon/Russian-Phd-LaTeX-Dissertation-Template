@@ -146,7 +146,7 @@
 
 \begin{frame}
 \frametitle{Предмет исследования}
-\framesubtitle{Допущения}
+\framesubtitle{Предположения}
 \begin{itemize}
   \item Рассматривается плоское сечение
   \item Параллельная схема проекции
@@ -156,15 +156,15 @@
   \mathrm I \left( \varphi, \xi , \lambda \right) = \mathrm I_0(\lambda) \exp\left( {-\int_{l(\varphi, \xi)} \! f(l, \lambda) \mathrm d l }\right),
   $$
   \small
-  $f(x, y)$ ---  линейная плотность ослабления рентгеновского излучения \\
-  $\mathrm I(\varphi, \xi, \lambda)$ --- дошедшая до детектора интенсивность излучения длины волны $\lambda$ \\
-  $\mathrm I_0(\lambda)$ --- спектральная интенсивность зондирующего излучения \\
+  $f(x, y)$ ---  описывает распределение линейного коэффициента ослабления рентгеновского излучения \\
+  $\mathrm I(\varphi, \xi, \lambda)$ --- зарегистрированная детектором интенсивность излучения длины волны $\lambda$ \\
+  $\mathrm I_0(\lambda)$ --- интенсивность зондирующего излучения \\
   $l(\varphi, \xi)$ --- параметризация прямой под углом $\varphi$, и сдвигом $\xi$ \\
 \end{frame}
 
 \begin{frame}
 \frametitle{Задача восстановления}
-  Ослабление интенсивности связано с преобразованием Радона $R[f(x,y)](\varphi, \xi)$:
+  Связь линейного коэффициента ослабления и интенсивности описывается преобразованием Радона $R[f(x,y)](\varphi, \xi)$:
 
   $$
   R[f](\varphi, \xi) = 
@@ -174,7 +174,7 @@
 
   После логарифмирования закона ослабления:
   $$
-  \ln \left (\frac{\mathrm I_0}{\mathrm I(\varphi, \xi)} \right) = p(\varphi, \xi) = R[f](\varphi, \xi)
+  \ln \left (\frac{\mathrm I_0(\lambda)}{\mathrm I(\varphi, \xi, \lambda)} \right) = p(\varphi, \xi) = R[f](\varphi, \xi)
   $$
 
 \end{frame}
@@ -183,35 +183,38 @@
 \frametitle{Задача восстановления}
 \begin{figure}
 \centering
-    прямая задача, измерение\\
+    прямая задача, модель измерения\\
     $\rightarrow$
     \\
     \includegraphics[width=0.8\textwidth]{sl_sinogram}
     \\
     $\leftarrow$ \\
-    обратная задача, восстановление
+    обратная задача, процедура восстановления
 \end{figure}
 \end{frame}
 
-\begin{frame}
-\frametitle{Задача восстановления}
-
-Задача восстановления функции $f(x,y)$- задача обращения преобразования Радона полученных измерений $p$:
-$$
-f(x,y) = R^{-1}(p(\varphi, \xi))
-$$
-\end{frame}
+% \begin{frame}
+% \frametitle{Задача восстановления}
+% 
+% Задача восстановления функции $f(x,y)$- задача обращения преобразования Радона полученных измерений $p$:
+% $$
+% f(x,y) = R^{-1}(p(\varphi, \xi))
+% $$
+% \end{frame}
 
 \begingroup
 \small
 \begin{frame}
 \frametitle{Методы восстановления}
-\begin{tabular}{p{0.15\textwidth} | p{0.4\textwidth} p{0.4\textwidth}}
+\begin{tabular}{p{0.15\textwidth} | p{0.4\textwidth} | p{0.4\textwidth}}
 \hspace{-1cm} семейство & Интегральные & Алгебраические \\ \hline
-\hspace{-1cm} подход & Аналитическая формула для обращения $p(\varphi, \xi)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline
+\hspace{-1cm} подход & Аналитическая формула для обращения $R^{-1}[p(\varphi, \xi)](x,y)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline
 \hspace{-1cm} представители & FBP & ART, SART, SIRT \\ \hline
 \hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline
-\hspace{-1cm} особенности & универсальность & возможность учета \hspace{1cm} модели объекта или измерительной схемы
+\hspace{-1cm} особенности & универсальность & возможность учета \hspace{1cm} модели объекта или измерительной схемы \\
+                          & требует полного набора проекционных углов, & \\ 
+                          & их равномерного распределения & \\
+                          & чувствительны к шумам & \\
 \end{tabular}
 
 $N$ --- число ячеек детектора
@@ -239,8 +242,8 @@ $N$ --- число ячеек детектора
 
 \begin{itemize}
   \item построение асимптотически быстрого алгебраического метода реконструкции, основанного на применении быстрого преобразования Хафа
-  \item доказательство сходимости построеного алгебраического метода реконструкции
-  \item построение алгоритма реконструкции для объектов, содержащих сильнопоглощающие включения.
+  \item доказательство сходимости построенного алгебраического метода реконструкции
+  \item построение алгоритма реконструкции для объектов, содержащих сильнопоглощающие включения
   \item построение алгоритма реконструкции, учитывающего покомпонентное ослабление полихроматического спектра.
 \end{itemize}
 
@@ -251,9 +254,9 @@ $N$ --- число ячеек детектора
 \begin{frame}
 \frametitle{Положения, выносимые на защиту}
 \begin{enumerate}
-  \item Предложенный алгебраический метод восстановления компьютерной томографии FHT-SIRT позволяет снизить асимтотическую оценку сложности вычисления итерации с $O(n^3)$ до $O(n^2~\log n)$, что подтвержается численными экспериментами и замерами времени работы программной реализации алгоритма
-  \item Доказана сходимость построеного алгебраического метода реконструкции. 
-  \item Предложенный метод на основе квадратичного программирования позволяет исправить артефакты восстановления, вызванные наличием в исследуемых объектах сильнопоглощающих включений.
+  \item Предложен алгебраический метод восстановления FHT-SIRT, который позволяет снизить асимптотическую оценку сложности вычисления итерации с $O(n^3)$ до $O(n^2~\log n)$, что подтвержается численными экспериментами и замерами времени работы программной реализации алгоритма.
+  \item Доказана сходимость построенного алгебраического метода реконструкции. 
+  \item Предложен метод реконструкции на основе квадратичного программирования, который позволяет исправить артефакты восстановления, вызванные наличием в исследуемых объектах сильнопоглощающих включений.
   \item Построен метод восстановления при зондировании полихроматическим излучением, позволяющий оценить распределение концентраций разных элементов в объекте.
 \end{enumerate}
 \end{frame}
@@ -269,7 +272,7 @@ $N$ --- число ячеек детектора
 
     {
     \centering
-    $f(x,y) \rightarrow f_i,\ p(\varphi, s) \rightarrow p_j$
+    $f(x,y) farrow f_i,\ p(\varphi, s) \rightarrow p_j$
     \par
     }
   \vspace{0.5cm}
@@ -283,9 +286,9 @@ $N$ --- число ячеек детектора
   \vspace{0.5cm}
 
     $\mathrm W$ - матрица проекции, указывает вклад пикселя $i$ в лучевую сумму вдоль луча $j$.
-    Разрженная матрица размера $N_\varphi * N^3$, в которой только порядка $O(N_\varphi * N) ненулевых элементов$
-    \vspace{1cm}
-  \item решение разреженной СЛАУ большой размерности итерационным методом.
+    Разреженная матрица размера $N_\varphi * N^3$, в которой только порядка $O(N_\varphi * N)$ ненулевых элементов
+    \vspace{0.5cm}
+  \item решение разреженной СЛАУ большой размерности итерационным методом
 
     {
     \centering
@@ -302,7 +305,7 @@ $N$ --- число ячеек детектора
 \centering
 $\Norm{p - \mathrm W f} \rightarrow \min\limits_f$
 
-задача решается итерационной минимизацией, шаг итерации имеет вид
+Оптимизационная задача решается итерационным методом, шаг итерации имеет вид
 \vspace{0.5cm}
 
 \begingroup
@@ -333,6 +336,7 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
 \begin{columns}[T,onlytextwidth]
   \hspace*{-0.5cm}
   \begin{column}{0.65\textwidth}
+  Приближенный способ вычисления сумм интенсивностей изображения вдоль всевозможных приямых
   \begin{figure}
     \includegraphics[width=1\textwidth]{fht}
   \end{figure}
@@ -341,7 +345,7 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
   \begin{itemize}
     \item диадические паттерны суммирования
     \item рекурсивная процедура построения
-    \item для больших размеров изображения хорошо приближает прямые (отклонение не превышает  $\frac 1 6 \log N$ \cite{ershov2015dyadic})
+    \item для больших размеров изображения хорошо приближает прямые (отклонение не превышает  $\frac 1 6 \log N$ ) %\cite{ershov2015dyadic})
     \item асимптотическая сложность $N^2 \log N$
   \end{itemize}
   \end{column}
@@ -392,11 +396,12 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
 
 \begingroup
 \small
-\newtheorem{myth}{Теорема}
+\vspace{-0.5cm}
+\newtheorem{myth}{Теорема}\
 \begin{myth}
 Пусть $pattern_j$ --- вертикальный паттерн скоса для j'ой строки преобразования Хафа изображения высотой $M_s = 2^n$.
 Тогда имеет место равенство:
-\begin{equation}
+\begin{equation} \notag
 \label{statement1}
 \begin{array}{l l}
 pattern_j[i] = pattern_i[j] & \quad  i,j \in \overline{1, 2^n},
@@ -406,7 +411,7 @@ pattern_j[i] = pattern_i[j] & \quad  i,j \in \overline{1, 2^n},
 \end{myth}
 \endgroup
 \noindent\rule{8cm}{0.4pt}
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 Откуда следует, что ${W^{\mathrm K}} ^ {\mathrm T} = W^{\mathrm K}$, а значит
 $$
@@ -418,17 +423,236 @@ $$
 
 \begin{frame}
 \frametitle{FHT-SIRT}
-\begin{figure}
-  \centering
-    \includegraphics[width=0.7\textwidth]{part1_img/time_30_it}
-  \caption{Время работы 30 итераций алгоритма.}
-\end{figure}
+\framesubtitle{исследование работы}
+
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.53\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/time_30_it}
+      \caption{Время работы 30 итераций алгоритма}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/it_till_stop}
+      \caption{количество итераций до останова}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Предобработка данных}
+
+Перед тем как вести минимизацию с помощью БПХ, необходимо привести измерения в пространство результатов БПХ.
+\begin{enumerate}
+  \item восстановить соответствие углов проекции строчкам БПХ
+  \item растянуть измерения с использованем линейной инерполяции:
+\end{enumerate}
+
+\hspace*{2cm}
+  \begin{itemize}
+    \item \rom{1} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{2} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{3} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+    \item \rom{4} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов}
+\textbf{Степень разрежения} --- доля отсутствующих углов полного БПХ-пространства
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.6\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/raw}
+    \caption{Без регуляризации}
+  \end{figure}
+  
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/medk}
+    \caption{Медианная регуляризация}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов: регуляризация по Тихонову}
+
+    \begin{figure}
+    \includegraphics[width=0.8\textwidth]{tikhonov}
+    \end{figure}
 
 \end{frame}
 
 \section{Подавление артефактов, вызванных наличием сильнопоглощающих включений}
 
+\begin{frame}
+\frametitle{Модель возникновения артефактов}
+  \begin{itemize}[<+->]
+    \item при прохождении через сильнопоглощающие включения большая часть излучения поглощается
+    \item пиксели детектора имеют некоторый порог активации $\delta_{\mathrm I min}$
+    \item если пришедшая интетсивность $\mathrm I_{j} \leq \delta_{\mathrm I min}$, показание детектора будет неотличимо от уровня шума
+    \item оптимизационная задача должна учитывать такие измерения особым образом
+    \item при логарифмировании условие $\mathrm I_{j} \leq \delta_{\mathrm I min}$ переходит в 
+    \begin{equation}
+      \label{eq:thresh}
+      p_j \geq \delta \left( = \ln \frac {\mathrm I_0}{\delta_{\mathrm I min}}\right)
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Учет пикселей с высоким поглощением}
+Пусь $\mathbb J = \left\{ j | p_j \geq \delta \right\}$, то есть индексы пикселей, для которых выполнено условие (\ref{eq:thresh}).
+
+С учетом пороговой активации, а так же неотрицательности функции $f$, оптимизационная задача будет иметь вид:
+
+
+\begin{equation} \notag
+  % \label{eq:quadprog_ineq}
+  \begin{cases}
+  \Norm{p - Wf} \rightarrow \min\limits_f & w.r.t \\
+  \sum_i f_{i} \omega_{ij} > \delta, & \mbox{если } j \in \mathbb J \\
+  f_{i} \geq 0 & \\
+  \end{cases}
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Квадратичное программирование}
+\begin{itemize}
+  \item оптимизация квадратичной функции на наборе линейных ограничений
+  \item частный случай выпуклой оптимизации
+  \item требует обращения матрицы $W^{\mathrm T} W$. 
+  \item для изображения 256х256 и 180 углов при использовании float64 такая матрица будет занимать порядка 32Гб
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Применение qp для малых размерностей}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+\begin{column}{0.4\textwidth}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{qp_phantom}
+  \end{figure}
+  фантом
+\end{column}
+
+\begin{column}{0.4\textwidth}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{qp_fbp}
+  \end{figure}
+  matlab iradon (fpb)
+\end{column}
+
+\begin{column}{0.4\textwidth}
+    \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{qp_qp_ineq}
+  \end{figure}
+  QP с ограничениями-неравенствами
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begingroup
+\small
+\begin{frame}
+  \frametitle{Как повысить разрешение?}
+  \begin{columns}[T, onlytextwidth]
+  \hspace{-0.5cm}
+  \begin{column}{0.5\textwidth}
+    \underline{Метод мягких неравенств} \\ \vspace{0.5cm}
+    Введем диагональную матрицу $\mathrm J \in \textup{diag}\{N N_\varphi\}$, такую что 
+    $\mathrm J_{j} = \left\{1, \mbox{если}\ j \in \mathbb J, \mbox{иначе }\ 0\right\}$, а так же $\mathrm K = \mathrm E - \mathrm J$.
+
+
+    \begin{equation} \notag
+      \label{eq:soft-ineq}
+      \begin{array}{lc}
+      \Norm{K(Wf - p)}^2 & + \\
+      \alpha \Norm{J(Wf - \delta)}^2  & \to \min\limits_f
+      \end{array}
+    \end{equation}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+    \underline{Метод барьерных функций} \\ \vspace{0.5cm}
+    Заменим неравенства вида $g(x) \leq 0$ на аддитивные барьерные функции $-\frac 1 t \log{-g(x)}$.
+    Начиная из ``внутренней''точки, будем минимизировать функционал, постепенно увеличивая t.
+    $$
+    \begin{array}{ccc}
+      F_t(f) = & \Norm{Wf - p}^2 & + \\
+              & \frac 1 t \sum \left( -\log{-g(x)} \right) &\to \min\limits_f
+    \end{array}{ccc}
+    $$
+
+    Так же возможно ввести ослабить ограничения, добавив переменные нежесткости $\xi$
+
+  \end{column}
+  \end{columns}
+\end{frame}
+\endgroup
+
+\begin{frame}
+\frametitle{Метод мягких неравенств}
+\framesubtitle{фантом}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Dissertation/images/part2_img/sample}
+  \caption{Реконструкции методом мягких ограничений.}
+  \label{fig:sample}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Метод мягких неравенств}
+\framesubtitle{реальная реконструкция}
+
+\begin{figure}
+\centering
+\vspace{-0.6cm}
+\begin{tabular}{@{}c@{}c}
+    \includegraphics[width=0.50\textwidth]{../Dissertation/images/part2_img/tooth_sino}
+&
+    \includegraphics[width=0.50\textwidth]{../Dissertation/images/part2_img/soft_ineq_pb_tooth}
+\\
+   \small a) & \small b)
+\end{tabular}
+  \caption{a --- Синограмма молочного зуба с включением из свинца. б --- результат восстановления методом мягких ограничений}
+\label{fig:tooth_sino_rec}
+\end{figure}
+
+\end{frame}
+
 \section{Задача реконструкции при зондировании полихроматическим излучением}
+
+
+
 
 \begin{comment}
 
