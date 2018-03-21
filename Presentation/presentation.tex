@@ -1,11 +1,12 @@
-\documentclass[14pt]{beamer}
+\documentclass[12pt]{beamer}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amssymb,amsfonts,amsmath,mathtext}
 \usepackage{cite,enumerate,float,indentfirst}
+\usepackage{comment}
 
-\graphicspath{{../images/}{images/}} 
+\graphicspath{{../images/}{images/}{../Dissertation/images}} 
 
 
 
@@ -19,6 +20,7 @@
 
 \newcommand{\todo}{\alert}
 \input{../common/data.tex}      % Основные сведения
+\input{../common/newnames.tex} 
 
 \setbeamercolor{footline}{fg=blue}
 \setbeamertemplate{footline}{
@@ -40,6 +42,21 @@
 
 \newcommand{\itemi}{\item[\checkmark]}
 
+\newcommand{\rom}[1]{%
+  \textup{\uppercase\expandafter{\romannumeral#1}}%
+}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
 %\title{\small{Название презентации}}
 \title{\small{\thesisTitle}}
 \author{\small{%
@@ -56,174 +73,392 @@
 \maketitle
 
 \begin{frame}
-\frametitle{Цели и задачи}
+\frametitle{Объект исследования}
+\textbf{Компьютерная томография} --- 
+
+неинвазивный неразрушающий метод исследования внутренней структуры образцов.
+\\ 
+Применятеся для:
 \begin{itemize}
-  \item \textbf{Предмет исследования:} 
-  \item \textbf{Исследуемые характеристики:} 
-  \item \textbf{Цель исследования:} 
-  \item \textbf{Актуальность:} 
+  \item Контроль качества изготавливаемых изделий
+  \item Медицинская диагностика
+  \item Численное моделирование на результатах КТ
+  \item Биологические и геологические исследования
+  \item Изготовление прототипов (3д-печать) по результатам КТ (?)
 \end{itemize}
+
 \end{frame}
 
 \begin{frame}
-\frametitle{Проблемы}
-\begin{itemize}
-  \item Проблема 1
-  \item Проблема 2
-  \item Проблема 3    
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{План работ}
-\begin{enumerate}
-  \item \textbf{Задача 1}
+\frametitle{Объект исследования}
+\centering
+Томографическое измерение:
+\begin{tabular}{p{0.45\textwidth} p{0.55\textwidth}}
+  \begin{figure}[H]
+    \includegraphics[width=0.45\textwidth]{../Dissertation/images/part1_img/experiment}
+  \end{figure}
+  &
   \begin{itemize}
-    \item Подзадача 1-1
-    \item Подзадача 1-2
+  \item $N$ ячеек детектора
+  \item $N_\varphi$ углов сканирования
+  \item Для каждого угла $\varphi$ и каждой ячейки $s$ измеряется интенсивонсть прошедшего рентгеновского излучения \\
+    $\mathrm I \left( \varphi, s \right) = \mathbb P (f(x, y))$
   \end{itemize}
-  \item \textbf{Задача 2}
-  \begin{itemize}
-    \item Подзадача 2-1
-    \item Подзадача 2-2
-    \item Подзадача 2-3
-  \end{itemize}
-  \item \textbf{Задача 3}
-  \begin{itemize}
-    \item Подзадача 3-1
-    \item Подзадача 3-2
-    \item Подзадача 3-3
-  \end{itemize}
-\end{enumerate}
-\end{frame}
-
-\begin{frame}
-\frametitle{Список обыкновенный}
-\begin{itemize}
-  \item Пункт 1
-  \item Пункт 2
-  \item Пункт 3
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Одиночное изображение}
-\begin{figure}[H]
-  \center
-  \includegraphics[width=0.8\linewidth]{latex}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Формулы}
-$$
-\left\{
-  \begin{array}{rl}
-    \dot x = & \sigma (y-x) \\
-    \dot y = & x (r - z) - y \\
-    \dot z = & xy - bz
-  \end{array}
-\right.
-$$
-\end{frame}
-
-\begin{frame}
-\frametitle{Составное изображение}
-\begin{figure}[h]
-  \begin{minipage}[h]{0.49\linewidth}
-    \textbf{Составная \\ подпись 1}
-    \center{\includegraphics[width=1\linewidth]{knuth1}}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[h]{0.49\linewidth}
-    \textbf{Составная \\ подпись 2}
-    \center{\includegraphics[width=1\linewidth]{knuth2}}
-  \end{minipage}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Таблица}
-\begin{tabular}{|l|l|}
-\hline
-\textbf{Заголовок 1} & \textbf{Заголовок 2} \\
-\hline
-Сумма & $b+a$ \\
-\hline
-Разность & $a-b$ \\
-\hline
-Произведение & $a*b$ \\
-\hline
 \end{tabular}
 \end{frame}
 
+\begingroup
+% \small
+
 \begin{frame}
-\frametitle{Большой многоуровневый список}
+\frametitle{Предмет исследования}
+Компьютерная томография --- программно-аппаратный комплекс
+% \pause
+\setlength{\leftmargini}{0em}
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{.4\textwidth}
+  \begin{itemize}
+    \item экспериментальная схема
+    \item калибровка 
+    \item \textbf{программная обработка $\rightarrow$}
+  \end{itemize}
+  \end{column}
+  \pause
+  \begin{column}[t]{0.4\linewidth}
+  \begin{itemize}
+    \item предобработка
+    \item \textbf{алгоритмы восстановления $\rightarrow$}
+    \item постобработка
+  \end{itemize}
+  \end{column}
+  \pause
+  \begin{column}[t]{0.35\linewidth}
+  \begin{itemize}
+    \item \textbf{метод оптимизации}
+    \item \textbf{модель регуляризации}
+    \item \textbf{физическая модель}
+    \item реализация математических примитивов
+  \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+\endgroup
+
+\begin{frame}
+\frametitle{Предмет исследования}
+\framesubtitle{Допущения}
 \begin{itemize}
-  \item \textbf{Пункт 1}
-    \begin{itemize}
-      \itemi Подпункт 1-1
-      \itemi Подпункт 1-2
-    \end{itemize}
-  \item \textbf{Пункт 2}
-    \begin{itemize}
-      \itemi Подпункт 2-1
-    \end{itemize}
-  \item \textbf{Пункт 3}
-    \begin{itemize}
-      \itemi Подпункт 3-1
-      \itemi Подпункт 3-2
-    \end{itemize}
-  \item \textbf{Пункт 4}
-    \begin{itemize}
-      \itemi Подпункт 4-1
-    \end{itemize}
-  \item \textbf{Пункт 5}
-    \begin{itemize}
-      \itemi Подпункт 5-1
-      \itemi Подпункт 5-2
-      \itemi Подпункт 5-3
-    \end{itemize}
+  \item Рассматривается плоское сечение
+  \item Параллельная схема проекции
+  \item Ослабление интенсивности излучения подчиняется закону Бугера-Ламберта-Бера:
 \end{itemize}
+  $$
+  \mathrm I \left( \varphi, \xi , \lambda \right) = \mathrm I_0(\lambda) \exp\left( {-\int_{l(\varphi, \xi)} \! f(l, \lambda) \mathrm d l }\right),
+  $$
+  \small
+  $f(x, y)$ ---  линейная плотность ослабления рентгеновского излучения \\
+  $\mathrm I(\varphi, \xi, \lambda)$ --- дошедшая до детектора интенсивность излучения длины волны $\lambda$ \\
+  $\mathrm I_0(\lambda)$ --- спектральная интенсивность зондирующего излучения \\
+  $l(\varphi, \xi)$ --- параметризация прямой под углом $\varphi$, и сдвигом $\xi$ \\
 \end{frame}
 
 \begin{frame}
-\frametitle{Четыре изображения}
-\begin{figure}[H]
-  \center
-    \includegraphics[width=0.4\linewidth]{latex}
-    \includegraphics[width=0.4\linewidth]{latex}\\
-    \includegraphics[width=0.4\linewidth]{latex}
-    \includegraphics[width=0.4\linewidth]{latex}
+\frametitle{Задача восстановления}
+  Ослабление интенсивности связано с преобразованием Радона $R[f(x,y)](\varphi, \xi)$:
+
+  $$
+  R[f](\varphi, \xi) = 
+ \iint \! \mathrm d x \mathrm d y f(x,y)\delta(x\cos\varphi + y\sin\varphi - \xi)
+  $$
+
+
+  После логарифмирования закона ослабления:
+  $$
+  \ln \left (\frac{\mathrm I_0}{\mathrm I(\varphi, \xi)} \right) = p(\varphi, \xi) = R[f](\varphi, \xi)
+  $$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Задача восстановления}
+\begin{figure}
+\centering
+    прямая задача, измерение\\
+    $\rightarrow$
+    \\
+    \includegraphics[width=0.8\textwidth]{sl_sinogram}
+    \\
+    $\leftarrow$ \\
+    обратная задача, восстановление
 \end{figure}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Перспективы развития проекта}
+\frametitle{Задача восстановления}
+
+Задача восстановления функции $f(x,y)$- задача обращения преобразования Радона полученных измерений $p$:
+$$
+f(x,y) = R^{-1}(p(\varphi, \xi))
+$$
+\end{frame}
+
+\begingroup
+\small
+\begin{frame}
+\frametitle{Методы восстановления}
+\begin{tabular}{p{0.15\textwidth} | p{0.4\textwidth} p{0.4\textwidth}}
+\hspace{-1cm} семейство & Интегральные & Алгебраические \\ \hline
+\hspace{-1cm} подход & Аналитическая формула для обращения $p(\varphi, \xi)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline
+\hspace{-1cm} представители & FBP & ART, SART, SIRT \\ \hline
+\hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline
+\hspace{-1cm} особенности & универсальность & возможность учета \hspace{1cm} модели объекта или измерительной схемы
+\end{tabular}
+
+$N$ --- число ячеек детектора
+\end{frame}
+\endgroup
+
+
+\begin{frame}
+\frametitle{Цели работы}
+
+разработка, теоретическое обоснование и численное исследование новых алгоритмов компьютерной томографии для восстановления измерений при зондировании рентгеновским моно- и полихроматическим излучением.
+\end{frame}
+
+\begin{frame}
+\frametitle{Цели работы}
 \begin{itemize}
-  \item Перспектива 1
-  \item Перспектива 2
-  \item Перспектива 3
-  \item Перспектива 4
-  \item Перспектива 5
+\item разработка и реализация асимптотически быстрых алгебраических методов реконструкции в задаче компьютерной томографии
+\item разработка новых математических моделей для решения задач восстановления при наличии неисключаемых причин ошибок
+\item разработка и численное тестирование алгоритмов восстановления в контексте построенных математических моделей
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle{Задачи}
+
+\begin{itemize}
+  \item построение асимптотически быстрого алгебраического метода реконструкции, основанного на применении быстрого преобразования Хафа
+  \item доказательство сходимости построеного алгебраического метода реконструкции
+  \item построение алгоритма реконструкции для объектов, содержащих сильнопоглощающие включения.
+  \item построение алгоритма реконструкции, учитывающего покомпонентное ослабление полихроматического спектра.
+\end{itemize}
+
+\end{frame}
+
+\begingroup
+\small
+\begin{frame}
+\frametitle{Положения, выносимые на защиту}
+\begin{enumerate}
+  \item Предложенный алгебраический метод восстановления компьютерной томографии FHT-SIRT позволяет снизить асимтотическую оценку сложности вычисления итерации с $O(n^3)$ до $O(n^2~\log n)$, что подтвержается численными экспериментами и замерами времени работы программной реализации алгоритма
+  \item Доказана сходимость построеного алгебраического метода реконструкции. 
+  \item Предложенный метод на основе квадратичного программирования позволяет исправить артефакты восстановления, вызванные наличием в исследуемых объектах сильнопоглощающих включений.
+  \item Построен метод восстановления при зондировании полихроматическим излучением, позволяющий оценить распределение концентраций разных элементов в объекте.
+\end{enumerate}
+\end{frame}
+\endgroup
+
+\section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
+
+\begin{frame}
+\frametitle{Алгебраический метод}
+\framesubtitle{Основные положения}
+\begin{itemize}
+  \item непрерывные функции $\rightarrow$ дискретные изображения:
+
+    {
+    \centering
+    $f(x,y) \rightarrow f_i,\ p(\varphi, s) \rightarrow p_j$
+    \par
+    }
+  \vspace{0.5cm}
+  \item преобразование Радона $\rightarrow$ преобразование Хафа:
+  
+    {
+    \centering
+    $R[f](\varphi, s) \rightarrow (\mathrm W f)_j$ 
+    \par
+    }
+  \vspace{0.5cm}
+
+    $\mathrm W$ - матрица проекции, указывает вклад пикселя $i$ в лучевую сумму вдоль луча $j$.
+    Разрженная матрица размера $N_\varphi * N^3$, в которой только порядка $O(N_\varphi * N) ненулевых элементов$
+    \vspace{1cm}
+  \item решение разреженной СЛАУ большой размерности итерационным методом.
+
+    {
+    \centering
+    $p = \mathrm W f$
+    \par
+    }
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгебраический метод}
+\framesubtitle{Решение СЛАУ}
+\centering
+$\Norm{p - \mathrm W f} \rightarrow \min\limits_f$
+
+задача решается итерационной минимизацией, шаг итерации имеет вид
+\vspace{0.5cm}
+
+\begingroup
+\footnotesize
+
+\hspace*{-0.5cm}
+\begin{tabular}{c|c|c}
+ART & SART & SIRT \\ \hline
+для каждого луча & для каждого угла & для всех лучей\\
+$j = 1 \dots N * N_\varphi$ & $\varphi_k$ & \\
+$\hat{f} = f - \gamma \mathrm W^{\mathrm T}_j(\mathrm W f - p)$ &
+$\hat{f} = f - \gamma \mathrm {W^{\varphi_k}}^{\mathrm T}(\mathrm W f - p)$ &
+$\hat{f} = f - \gamma \mathrm W^{\mathrm T}(\mathrm W f - p)$ \\
+\end{tabular}
+
+\vspace{0.5cm}
+\raggedright
+\endgroup
+
+$\mathrm W_j$ --- столбец матрицы для луча $j$,\\
+$\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$, $\mathrm W = \sum_\varphi {\mathrm W^\varphi}$
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Быстрое преобразование Хафа}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.65\textwidth}
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{fht}
+  \end{figure}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}
+    \item диадические паттерны суммирования
+    \item рекурсивная процедура построения
+    \item для больших размеров изображения хорошо приближает прямые (отклонение не превышает  $\frac 1 6 \log N$ \cite{ershov2015dyadic})
+    \item асимптотическая сложность $N^2 \log N$
+  \end{itemize}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Быстрое преобразование Хафа}
+\frametitle{Процедура формирования диадических паттернов}
+  \begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{../Dissertation/images/part1_img/hough_proc}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{прямая проекция}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.65\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/pattern_structure}
+  \end{figure}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    Углы в БПХ делятся на 4 группы:
+    \begin{equation} \notag
+    \begin{array}{lll}
+    \alpha^\rom{1}_i &= \pi - & \arctan{\frac{N-1-i}{N-1}} \\
+    \alpha^\rom{2}_i &= &\arctan{\frac{i - (N-1)}{N-1}} \\
+    \alpha^\rom{3}_i &= \frac \pi 2 - & \arctan{\frac{3(N-1)-i}{N-1}} \\
+    \alpha^\rom{4}_i &= \frac \pi 2 - & \arctan{\frac{i - 3(N-1)}{N-1}}
+    \end{array}
+    \end{equation}
+
+    Вычисление прямой проекции в шаге FHT-SIRT имеет вид 
+        $\mathrm W = \left( \mathrm  W^\rom{1}\ \mathrm W^\rom{2}\ \mathrm  W^\rom{3}\ \mathrm  W^\rom{4} \right)^{\mathrm T}$.
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{обратная проекция}
+
+\begingroup
+\small
+\newtheorem{myth}{Теорема}
+\begin{myth}
+Пусть $pattern_j$ --- вертикальный паттерн скоса для j'ой строки преобразования Хафа изображения высотой $M_s = 2^n$.
+Тогда имеет место равенство:
+\begin{equation}
+\label{statement1}
+\begin{array}{l l}
+pattern_j[i] = pattern_i[j] & \quad  i,j \in \overline{1, 2^n},
+\end{array}
+\end{equation}
+т. е. матрица, составленная из паттернов скоса, записанных в качестве столбцов, симметрична.
+\end{myth}
+\endgroup
+\noindent\rule{8cm}{0.4pt}
+\vspace{0.5cm}
+
+Откуда следует, что ${W^{\mathrm K}} ^ {\mathrm T} = W^{\mathrm K}$, а значит
+$$
+W^{\mathrm T} q = \sum_{K=\rom{1}}^{K=\rom{4}}{W^{\mathrm K} q}
+$$
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\begin{figure}
+  \centering
+    \includegraphics[width=0.7\textwidth]{part1_img/time_30_it}
+  \caption{Время работы 30 итераций алгоритма.}
+\end{figure}
+
+\end{frame}
+
+\section{Подавление артефактов, вызванных наличием сильнопоглощающих включений}
+
+\section{Задача реконструкции при зондировании полихроматическим излучением}
+
+\begin{comment}
+
+\begin{frame}
+далее план
+\begin{itemize}
+\item переходим к предмету исследований, показываем слайд с кружочками и выделяем там предмет исследования
+\item рассказываем допущения используемые: параллельная схема, закон Бугера, монохроматичность
+\item интегральные vs алгебраические, говорим что рассматривать будем алгебраические.
+\item перезодим к целям и задачам, положениям выносимым на защиту
+\item далее 1 глава, объясняем про fht, демонстрируем результаты
+\item далее 2 глава, объясняем проблему, объясняем модель, постановку задачи квадратичного программирования, результаты, барьерный метод
+\item далее переход к полихроматике, 3 глава, градиентный спуск, регуляризация, клиппинг, применение барьерного метода.
+\item выводы и discussion.
+
+\end{itemize}
+\end{frame}
+
+\end{comment}
 
 \begin{frame}
 \frametitle{Результаты работы}
 \begin{itemize}
-  \item Результат 1
-  \item Результат 2
-  \item Результат 3
-  \item Результат 4
+  \item Получено аналитическое выражение для операции транспонированного быстрого преобразования Хафа. Доказана теорема о симметричности четверти БПХ, отвечающей одной группе ориентаций лучей. Получен метод вычислительно эффективного вычисления транспонированного преобразования.
+  \item Построен вычислительно эффективный алгебраический метод восстановления измерений компьютерной томографии на основе БПХ. Произведена адаптация метода для работы с данными реальных измерений. Изучены свойства пространства БПХ, влияние различной регуляризации на процесс восстановления.
+  \item Построен метод восстановления рентгеновской томографии методом квадратичного программирования для объектов, содержащих сильнопоглощающие включения. На реальных экспериментальных измерениях проведено исследование метода мягких ограничений и сравнение с методом квадратичного программирования.
+  \item Построен алгебраический алгоритм восстановления томографии в задаче зондирования полихроматическим излучением, основанный на вычиследнии взвешанных невязок по каждому из элементов, входящих в состав исследуемого образца. Предложены варианты регуляризации для востановления в полихроматической моде. Разработанный метод восстановления позволяет разделить концентрации компонентов смеси при восстановлении.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\begin{center}
-Спасибо за внимание!
-\end{center}
-\end{frame}
+\section{Спасибо за внимание!}
 
 \end{document} 
