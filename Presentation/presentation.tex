@@ -5,6 +5,7 @@
 \usepackage{amssymb,amsfonts,amsmath,mathtext}
 \usepackage{cite,enumerate,float,indentfirst}
 \usepackage{comment}
+\usepackage{animate}
 
 \graphicspath{{../images/}{images/}{../Dissertation/images}} 
 
@@ -45,6 +46,14 @@
   \textup{\uppercase\expandafter{\romannumeral#1}}%
 }
 
+\newcommand\Wider[2][3em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
 \AtBeginSection[]{
   \begin{frame}
   \vfill
@@ -63,6 +72,9 @@
 \emph{докладчик:}~\thesisAuthorShort\\%
 \emph{научный руководитель:}~\supervisorRegaliaShort~\supervisorFioShort}\\%
 \vspace{30pt}%
+\thesisSpecialtyNumber \ \thesisSpecialtyTitle 
+\\
+\vspace{30pt}%
 \thesisOrganization%
 \vspace{20pt}%
 }
@@ -71,6 +83,68 @@
 \begin{document}
 
 \maketitle
+
+\begin{frame}
+\frametitle{Цель работы} % move to 1st slide
+Разработка, обоснование и тестирование новых методов реконструкции в задаче компьютерной томографии, их эффективная численная реализация, а также создание метода интерпретации результатов томографического эксперимента в полихроматической моде.
+\end{frame}
+
+\begin{comment}
+\begin{frame}
+\frametitle{Цели работы}
+\begin{itemize}
+\item разработка и реализация асимптотически быстрых алгебраических методов реконструкции в задаче компьютерной томографии
+\item разработка новых алгоритмов для решения задач восстановления при наличии неисключаемых причин ошибок
+\item разработка и численное тестирование алгоритмов восстановления в контексте построенных математических моделей
+\end{itemize}
+\end{frame}
+\end{comment}
+
+
+\begingroup
+\footnotesize
+\begin{frame}
+
+\frametitle{Положения, выносимые на защиту}
+\Wider[5em]{
+
+\begin{enumerate}
+  \item Предложен эффективный вычислительный метод решения задачи томографической реконструкции FHT-SIRT, основанный на алгебраическом подходе, который позволяет снизить асимптотическую оценку сложности вычисления итерации с $O(n^3)$ до $O(n^2~\log n)$, что подтвержается численными экспериментами и замерами времени работы программной реализации алгоритма.
+  \item Доказана сходимость предложенного метода. 
+  \item Предложен метод реконструкции на основе квадратичного программирования, который позволяет уменьшить артефакты на восстановленном изображении, вызванные наличием сильно поглощающих областей в зондируемом объекте.
+  \item Предложен алгебраический метод реконструкции для случая полихроматического зондирования, который позволяет оценить пространственное распределение концентраций разных элементов в зондируемом объеме. Математическая модель формирования томографической проекции, используемая на шаге прямого проецирования, включает линейную комбинацию концентраций.
+\end{enumerate}
+}
+\end{frame}
+\endgroup
+
+
+
+
+\begin{comment}
+\begin{frame}
+\frametitle{Задачи}
+
+\begin{itemize}
+  \item построение асимптотически быстрого алгебраического метода реконструкции, основанного на применении быстрого преобразования Хафа
+  \item доказательство сходимости построенного алгебраического метода реконструкции
+  \item построение алгоритма реконструкции для объектов, содержащих сильнопоглощающие включения
+  \item построение алгоритма реконструкции, учитывающего покомпонентное ослабление полихроматического спектра.
+\end{itemize}
+
+\end{frame}
+\end{comment}
+
+\begin{frame}
+\frametitle{Научная новизна}
+\begin{enumerate}
+  \item Впервые для реконструкции томографических измерений было применено быстрое преобразование Хафа.
+  \item Впервые получено выражение для производной быстрого преобразования Хафа, а так же алгоритм его эффективного вычисления.
+  \item Построен алгоритм реконструкции, учитывающий вклад сильно поглощающих включений с помощью оригинальной модели ограничений-неравенств.
+  \item Предложена схема обработки данных полихроматического зондирования, при которой восстанавливаются реальные физические концентрации элементов.
+\end{enumerate}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Объект исследования}
@@ -221,46 +295,6 @@ $N$ --- число ячеек детектора
 \end{frame}
 \endgroup
 
-
-\begin{frame}
-\frametitle{Цели работы}
-
-разработка, теоретическое обоснование и численное исследование новых алгоритмов компьютерной томографии для восстановления измерений при зондировании рентгеновским моно- и полихроматическим излучением.
-\end{frame}
-
-\begin{frame}
-\frametitle{Цели работы}
-\begin{itemize}
-\item разработка и реализация асимптотически быстрых алгебраических методов реконструкции в задаче компьютерной томографии
-\item разработка новых алгоритмов для решения задач восстановления при наличии неисключаемых причин ошибок
-\item разработка и численное тестирование алгоритмов восстановления в контексте построенных математических моделей
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Задачи}
-
-\begin{itemize}
-  \item построение асимптотически быстрого алгебраического метода реконструкции, основанного на применении быстрого преобразования Хафа
-  \item доказательство сходимости построенного алгебраического метода реконструкции
-  \item построение алгоритма реконструкции для объектов, содержащих сильнопоглощающие включения
-  \item построение алгоритма реконструкции, учитывающего покомпонентное ослабление полихроматического спектра.
-\end{itemize}
-
-\end{frame}
-
-\begingroup
-\small
-\begin{frame}
-\frametitle{Положения, выносимые на защиту}
-\begin{enumerate}
-  \item Предложен алгебраический метод восстановления FHT-SIRT, который позволяет снизить асимптотическую оценку сложности вычисления итерации с $O(n^3)$ до $O(n^2~\log n)$, что подтвержается численными экспериментами и замерами времени работы программной реализации алгоритма.
-  \item Доказана сходимость построенного алгебраического метода реконструкции. 
-  \item Предложен метод реконструкции на основе квадратичного программирования, который позволяет исправить артефакты восстановления, вызванные наличием в исследуемых объектах сильнопоглощающих включений.
-  \item Построен метод восстановления при зондировании полихроматическим излучением, позволяющий оценить распределение концентраций разных элементов в объекте.
-\end{enumerate}
-\end{frame}
-\endgroup
 
 \section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
 
@@ -488,6 +522,16 @@ $$
 
 \begin{frame}
 \frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов: медианная регуляризация}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{slice_11}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
 \framesubtitle{Сходимость при малом количестве углов: регуляризация по Тихонову}
 
     \begin{figure}
@@ -496,7 +540,133 @@ $$
 
 \end{frame}
 
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Анимация процесса восстановления}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.4\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/frame_}{1}{60}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/slice_}{1}{60}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% ======================================================
+% ================= Сравнение с SART ===================
+% ======================================================
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART}
+  \begin{figure}
+  \includegraphics[width=0.8\textwidth]{sart__fht_sirt}
+  \end{figure}
+
+% \hline
+\vspace{1cm}
+
+
+\small
+\begin{tabular}{c|c c}
+    метод & SART & FHT-SIRT \\
+    количество итераций & 1 & 40 \\
+    время & 0.931c & 0.935c \\
+    ошибка & 11.8845 & 16.1192 \\
+    СКО & 0.3278 & 0.3882 \\
+\end{tabular}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_80}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_127}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_v_50}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
 \section{Подавление артефактов, вызванных наличием сильнопоглощающих включений}
+
+\begin{frame}
+\frametitle{Примеры артефактов}
+
+\begin{columns}[t]
+\column{.5\textwidth}
+\centering
+\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med}\\
+\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med_2}
+
+\column{.5\textwidth}
+\centering
+\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med_3}\\
+\includegraphics[height=0.5\textheight]{high_absorb_artifacts}
+\end{columns}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Модель возникновения артефактов}
@@ -743,22 +913,36 @@ $S = \int_0^{+\infty} { I_0(\lambda) d\lambda}$
 \end{frame}
 
 \begin{frame}
-\frametitle{фантом}
-\vspace{-0.5cm}
+\frametitle{Исходные данные}
+\begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{0999}
-\vspace{-1cm}
-фантом на тривиальных спектрах
+\includegraphics[width=\textwidth]{0999}
+\\
+\caption{фантом на тривиальных спектрах}
+\end{figure}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Результаты восстановления}
-\vspace{-0.5cm}
+\frametitle{Исходные данные}
+\begin{figure}
+
 \centering
-\includegraphics[width=0.9\textwidth]{whiterec_res}
-\vspace{-1cm}
-Метод взвешенных невязок + метод барьерных функуий + мультипликативная регуляризация
+\includegraphics[height=0.7\textheight]{../Dissertation/images/part3_img/synth_spectre}
+\\
+\caption{спектры и массовые коэффициенты ослабления элементов}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты восстановления}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{whiterec_res}
+\\
+\caption{Метод взвешенных невязок + метод барьерных функуий + мультипликативная регуляризация}
+\end{figure}
 \end{frame}
 
 
