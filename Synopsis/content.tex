@@ -209,11 +209,11 @@ W^{\mathrm T}\left( \textbf p - W \textbf f\right) = \sum_{\xi = \rom{1}} ^{\xi 
 Этого можно избежать, если заменить уравнения ограничений задачи оптимизации на аддитивные квадратичные регуляризирующие штрафы, выражающие эти ограничения.
 Такой подход называется методом мягких ограничений.
 В контексте решаемой задачи и ее ограничений, предлагается ввести квадратичные штрафы за нарушение выхода за границы порога $\delta$.
-Если ввести диагональные матрицы-индикаторы нарушения ограничений, $J_{ii} = \left\{1, \mbox{если} \left(\sum f_{i} \omega_{ij} > \delta \right), \mbox{иначе } 0\right\}$, и $K = E - J$, то задача минимизации с мягкими ограничениями будет выглядеть как
+Если ввести диагональные матрицы-индикаторы нарушения ограничений, $J_{ii} = \left\{1, \mbox{если} \left(\sum f_{i} \omega_{ij} \geq \delta \right), \mbox{иначе } 0\right\}$, и $K = E - J$, то задача минимизации с мягкими ограничениями будет выглядеть как
 
 \begin{equation} \notag
   \label{eq:soft-ineq}
-  ||K(Wf - P^{\textup{изм}})||^2 + \alpha ||J(Wf - \Delta)||^2 \to \min\limits_f,
+  ||K(Wf - P^{\textup{изм}})||^2 + \alpha ||J(Wf - \delta)||^2 \to \min\limits_f,
 \end{equation}
 
 В работе проводится исследования метода мягких ограничений с использованием данных лабораторных измерений.
@@ -252,10 +252,10 @@ W^{\mathrm T}\left( \textbf p - W \textbf f\right) = \sum_{\xi = \rom{1}} ^{\xi 
 
 
 \begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{Dissertation/images/part2_img/pb_hist}
-	\caption{Распределение интенсивностей синограммы}
-	\label{fig:pb_hist}
+  \centering
+  \includegraphics[width=0.9\textwidth]{Dissertation/images/part2_img/pb_hist}
+  \caption{Распределение интенсивностей синограммы}
+  \label{fig:pb_hist}
 \end{figure}
 
 
