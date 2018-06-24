@@ -1,16 +1,23 @@
 all:	talk
 
-talk:	pdf
+talk:
+	pdf
+	ias
 	#	latexmk -pdf -pdflatex="xelatex %O %S" presentation.tex
 
 pdf:
-	latexmk -pdf -jobname=presentation -silent  presentation.tex
+	latexmk -pdf -jobname=presentation presentation.tex
+
+ias:
+	latexmk -pdf -jobname=pres_for_20180626 pres_for_20180626.tex
+
 # xedraft:
 # 	xelatex -ini "&pdflatex draft-preamble.tex\dump"
 # 	latexmk -pdf -pdflatex="xelatex %O %S" draft
 
 clean:
 	latexmk -C presentation
+	latexmk -C pres_for_20180626
 	rm -f synopsis.bbl
 
 distclean:
