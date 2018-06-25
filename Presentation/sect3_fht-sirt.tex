@@ -1,0 +1,314 @@
+% \section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
+
+\begin{frame}
+\frametitle{Быстрое преобразование Хафа}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.65\textwidth}
+  Приближенный способ вычисления сумм интенсивностей изображения вдоль всевозможных прямых
+  \begin{figure}
+    \includegraphics[width=1\textwidth]{fht}
+  \end{figure}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}
+    \item диадические паттерны суммирования
+    \item рекурсивная процедура построения
+    \item для больших размеров изображения хорошо приближает прямые (отклонение не превышает  $\frac 1 6 \log N$ ) %\cite{ershov2015dyadic})
+    \item асимптотическая сложность $N^2 \log N$
+  \end{itemize}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Быстрое преобразование Хафа}
+\framesubtitle{вид матрицы W}
+\centering
+\begin{columns}
+
+\column{0.2\textwidth}
+Обычная проекция \\
+$N = 10$ \\
+$N_\varphi = 35$
+
+\column{0.3\textwidth}
+\includegraphics[height=0.7\textheight]{w_matrices/W_10_35_plot.png}
+
+\column{0.3\textwidth}
+\includegraphics[height=0.85\textheight]{w_matrices/W_FHT_10_plot.png}
+
+\column{0.2\textwidth}
+БПХ \\
+$N = 10$ \\
+$N_\varphi = 37$ \\
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Процедура формирования паттернов}
+  \begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{../Dissertation/images/part1_img/hough_proc}
+  \end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{прямая проекция}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.65\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/pattern_structure}
+  \end{figure}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    Углы в БПХ делятся на 4 группы:
+    \begin{equation} \notag
+    \begin{array}{lll}
+    \alpha^\rom{1}_i &= \pi - & \arctan{\frac{N-1-i}{N-1}} \\
+    \alpha^\rom{2}_i &= &\arctan{\frac{i - (N-1)}{N-1}} \\
+    \alpha^\rom{3}_i &= \frac \pi 2 - & \arctan{\frac{3(N-1)-i}{N-1}} \\
+    \alpha^\rom{4}_i &= \frac \pi 2 - & \arctan{\frac{i - 3(N-1)}{N-1}}
+    \end{array}
+    \end{equation}
+
+    Вычисление прямой проекции в шаге FHT-SIRT имеет вид 
+        $\mathrm W = \left( \mathrm  W^\rom{1}\ \mathrm W^\rom{2}\ \mathrm  W^\rom{3}\ \mathrm  W^\rom{4} \right)^{\mathrm T}$.
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{обратная проекция}
+
+\begingroup
+\small
+\vspace{-0.5cm}
+\newtheorem{myth}{Лемма}\
+\begin{myth}
+Пусть $pattern_j$ --- вертикальный паттерн скоса для j'ой строки преобразования Хафа изображения высотой $M_s = 2^n$.
+Тогда имеет место равенство:
+\begin{equation} \notag
+\label{statement1}
+\begin{array}{l l}
+pattern_j[i] = pattern_i[j] & \quad  i,j \in \overline{1, 2^n},
+\end{array}
+\end{equation}
+т. е. матрица, составленная из паттернов скоса, записанных в качестве столбцов, симметрична.
+\end{myth}
+\endgroup
+\noindent\rule{8cm}{0.4pt}
+\vspace{0.3cm}
+
+Откуда следует, что ${W^{\mathrm K}} ^ {\mathrm T} = W^{\mathrm K}$, а значит
+$$
+W^{\mathrm T} q = \sum_{K=\rom{1}}^{K=\rom{4}}{W^{\mathrm K} q}
+$$
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{исследование работы}
+
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-0.5cm}
+  \begin{column}{0.53\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/time_30_it}
+      \caption{Время работы 30 итераций алгоритма}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/it_till_stop}
+      \caption{количество итераций до останова}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Предобработка данных}
+
+Перед тем как вести минимизацию с помощью БПХ, необходимо привести измерения в пространство результатов БПХ.
+\begin{enumerate}
+  \item восстановить соответствие углов проекции строчкам БПХ
+  \item растянуть измерения с использованем линейной интерполяции:
+\end{enumerate}
+
+\hspace*{2cm}
+  \begin{itemize}
+    \item \rom{1} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{2} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{3} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+    \item \rom{4} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов}
+\textbf{Степень разрежения} --- доля отсутствующих углов полного БПХ-пространства
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.6\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/raw}
+    \caption{Без регуляризации}
+  \end{figure}
+  
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/medk}
+    \caption{Медианная регуляризация}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов: медианная регуляризация}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{slice_11}
+\end{figure}
+
+\end{frame}
+
+
+\begin{comment}
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Сходимость при малом количестве углов: регуляризация по Тихонову}
+
+    \begin{figure}
+    \includegraphics[width=0.8\textwidth]{tikhonov}
+    \end{figure}
+
+\end{frame}
+\end{comment}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{Анимация процесса восстановления}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.4\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/frame_}{1}{60}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/slice_}{1}{60}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% ======================================================
+% ================= Сравнение с SART ===================
+% ======================================================
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART}
+  \begin{figure}
+  \includegraphics[width=0.8\textwidth]{sart__fht_sirt}
+  \end{figure}
+
+% \hline
+\vspace{1cm}
+
+
+\small
+\begin{tabular}{c|c c}
+    метод & SART & FHT-SIRT \\
+    количество итераций & 1 & 40 \\
+    время & 0.931c & 0.935c \\
+    ошибка & 11.8845 & 16.1192 \\
+    СКО & 0.3278 & 0.3882 \\
+\end{tabular}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_80_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_80}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_127_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_127}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{FHT-SIRT}
+\framesubtitle{сравнение с SART: кросс-секции}
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.2\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{1.5cm}
+      \includegraphics[width=1.5\textwidth]{cs_v_50_viz}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.8\textwidth}
+    \begin{figure}
+      \centering
+      \vspace{-1cm}
+      \includegraphics[width=1.2\textwidth]{cs_v_50}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
