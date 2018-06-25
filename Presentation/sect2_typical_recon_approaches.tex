@@ -21,28 +21,40 @@ $N$ --- число ячеек детектора
 \begin{frame}
 \frametitle{Метод Свертки и обратной проекции}
 \begin{columns}
-  
-  \begin{column}{0.5\textwidth}
+  \hspace{-0.1cm}
+  \begin{column}{0.6\textwidth}
     Основные шаги метода:
     \begin{itemize}
-    \item вычисление Фурье-образа $F[p(\xi, \varphi)](u, \varphi)$ и свертка с фильтром $F^{-1}[|u|]$
-    \item воспользовавшись теоремой Фурье о центральном сечении произвести подмену координат
-    \item вычислить обратную проекцию.
-    \todo{скорректировать}
+    \item Фильтрация проекций: $\tilde{p}(\xi, \varphi) = F^{-1}[|u|F[p(\xi, \varphi)](u)$\\
+    $F[\cdot], F^{-1}[\cdot]$ --- прямое и обратное преобразования Фурье по $\xi$\\
+    \vspace{10pt}
+    \item Вычисление обратной проекции $f(x,y) = \int_0^\pi {\tilde{p} (x \cos\varphi + y \sin \varphi, \varphi) d\varphi}$
     \end{itemize}
   \end{column}
 
-  \begin{column}{0.5\textwidth}
+  \begin{column}{0.6\textwidth}
+  Достоинства:
+  \begin{itemize}
+    \item скорость работы
+    \item универсальность
+    \item точная формула (при непрерывных значениях $\xi, \varphi$)
+  \end{itemize}
+  Недостатки:
+  \begin{itemize}
+    \item требует равномерную сетку углов
+    \item чувствителен к шумам
+    \item не позволяет учитывать специфики эксперимента
+  \end{itemize}
   \end{column}
-
 \end{columns}
 \end{frame}
 
 \begin{frame}
+\centering
 \frametitle{Метод Свертки и обратной проекции}
   \includegraphics[width=0.8\textwidth]{fbp_img.png}
   \\
-
+  Операция обратной проекции
 \end{frame}
 
 %\section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
@@ -68,7 +80,7 @@ $N$ --- число ячеек детектора
     }
   \vspace{0.5cm}
 
-    $\mathrm W$ - матрица проекции, указывает вклад пикселя $i$ в лучевую сумму вдоль луча $j$.
+    $\mathrm W$ --- матрица проекции, указывает вклад пикселя $i$ в лучевую сумму вдоль луча $j$.\\
     Разреженная матрица размера $N_\varphi * N^3$, в которой только порядка $O(N_\varphi * N^2)$ ненулевых элементов
     \vspace{0.5cm}
   \item решение разреженной СЛАУ большой размерности итерационным методом
@@ -123,5 +135,58 @@ $\hat{f} = f - \gamma \mathrm W^{\mathrm T}(\mathrm W f - p)$ \\
 $\mathrm W_j$ --- столбец матрицы для луча $j$,\\
 $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$, $\mathrm W = \sum_\varphi {\mathrm W^\varphi}$
 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{SIRT}
+\framesubtitle{Анимация процесса восстановления}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.4\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/frame_}{1}{60}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/slice_}{1}{60}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгебраический метод}
+
+Преимущества:\\
+\begin{itemize}
+  \item качество восстановления
+  \item возможность учета специфики эксперимента (регуляризация, ограничения)
+\end{itemize}
+\vspace{2cm}
+
+Недостатки:\\
+\begin{itemize}
+  \item сложность настройки
+  \item низкая скорость работы
+  \item сходимость
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Направления развития алгебраических методов}
+
+\begin{itemize}
+  \item \textbf{ускорение}
+  \begin{itemize}
+    \item использование GPU
+    \item \textbf{улучшение асимптотики итерации}
+    \item ускорение сходимости итерационной процедуры
+  \end{itemize}
+  \item \textbf{улушчение качества восстановления, борьба с артефактами}
+    \begin{itemize}
+    \item beam hardening
+    \item \textbf{metal artifacts}
+    \end{itemize}
+  \item \textbf{улучшение возможностей интерпретации результатов восстановления}\\
+  \small{В условиях лабороторного спектра восстановленная характеристика является усреднением линейного коэффициента полгощения по спектру}
+\end{itemize}
 
 \end{frame}
