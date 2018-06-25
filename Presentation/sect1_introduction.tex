@@ -1,5 +1,5 @@
 \begin{frame}
-% \frametitle{Объект исследования}
+\frametitle{Томографическое измерение}
 \textbf{Компьютерная томография} --- 
 
 неразрушающий метод исследования внутренней структуры образцов.
@@ -15,9 +15,9 @@
 \end{frame}
 
 \begin{frame}
-% \frametitle{Объект исследования}
+\frametitle{Томографическое измерение}
 \centering
-Томографическое измерение:
+
 \begin{tabular}{p{0.45\textwidth} p{0.55\textwidth}}
   \begin{figure}[H]
     \includegraphics[width=0.45\textwidth]{../Dissertation/images/part1_img/experiment}
@@ -35,6 +35,11 @@
 \end{tabular}
 \end{frame}
 
+\begin{frame}
+\frametitle{Томографическое измерение}
+\animategraphics[loop,controls,width=\linewidth]{10}{zub_anim/sino_}{000}{39}
+\end{frame}
+
 \begingroup
 % \small
 
@@ -48,14 +53,14 @@
   \begin{itemize}
     \item экспериментальная схема
     \item калибровка 
-    \item \textbf{программная обработка $\rightarrow$}
+    \item \textbf{программная обработка \ $\rightarrow$}
   \end{itemize}
   \end{column}
   \pause
   \begin{column}[t]{0.4\linewidth}
   \begin{itemize}
     \item предобработка
-    \item \textbf{алгоритмы восстановления $\rightarrow$}
+    \item \textbf{алгоритмы восстановления \ $\rightarrow$}
     \item постобработка
   \end{itemize}
   \end{column}
@@ -71,17 +76,6 @@
 \end{columns}
 \end{frame}
 \endgroup
-
-% \begin{frame}
-% \frametitle{План доклада}
-% \begin{itemize}
-% \item Подходы к решению задачи восстановления в КТ
-% \item Алгоритм восстановления FHT-SIRT
-% \item Учет наличия в объекте высокопоглощающих включений
-% \item Метод восвзвешанных невязок
-% \end{itemize}
-% \end{frame}
-
 
 \begin{frame}
 \frametitle{Предположения}
@@ -143,11 +137,26 @@
 \end{figure}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Задача восстановления}
-% 
-% Задача восстановления функции $f(x,y)$- задача обращения преобразования Радона полученных измерений $p$:
-% $$
-% f(x,y) = R^{-1}(p(\varphi, \xi))
-% $$
-% \end{frame}
+\begin{frame}
+\frametitle{Задача восстановления}
+
+Задача восстановления в компьютерной томографии: \\
+
+по измерениям логарифмов интенсивности пришедшего рентгеновсокго излучения
+
+$$
+p(\xi, \varphi),\ \xi = 1 \dots N,\ \varphi = 1 \dots N_\varphi
+$$
+
+вычислить функцию распределения линейного коэффициента ослабления 
+$$
+f(x,y), x = 1 \dots N,\ y = 1 \dots N, 
+$$
+
+то есть применить обратное преобразование Радона:
+
+$$
+f(x,y) = R^{-1}[p(\varphi, \xi)](x,y)
+$$
+
+\end{frame}
