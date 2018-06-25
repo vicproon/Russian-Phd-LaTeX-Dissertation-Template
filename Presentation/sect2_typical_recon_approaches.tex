@@ -3,22 +3,47 @@
 \begin{frame}
 \frametitle{Методы восстановления}
 \begin{tabular}{p{0.15\textwidth} | p{0.4\textwidth} | p{0.4\textwidth}}
-\hspace{-1cm} семейство & Интегральные & Алгебраические \\ \hline
-\hspace{-1cm} подход & Аналитическая формула для обращения $R^{-1}[p(\varphi, \xi)](x,y)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline
-\hspace{-1cm} представители & FBP & ART, SART, SIRT \\ \hline
-\hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline
+\hspace{-1cm} семейство & Интегральные & Алгебраические \\ \hline \vspace{10pt}
+\hspace{-1cm} подход & формула для обращения $R^{-1}[p(\varphi, \xi)](x,y)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline \vspace{10pt}
+\hspace{-1cm} представители & FBP & ART, SART, SIRT \\ \hline \vspace{10pt}
+\hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline \vspace{10pt}
 \hspace{-1cm} особенности & универсальность & возможность учета \hspace{1cm} модели объекта или измерительной схемы \\
                           & требует полного набора проекционных углов, & \\ 
                           & их равномерного распределения & \\
                           & чувствительны к шумам & \\
 \end{tabular}
 \\
-\vspace{0.5cm}
-
+\vspace{5pt}
 $N$ --- число ячеек детектора
 \end{frame}
 \endgroup
 
+\begin{frame}
+\frametitle{Метод Свертки и обратной проекции}
+\begin{columns}
+  
+  \begin{column}{0.5\textwidth}
+    Основные шаги метода:
+    \begin{itemize}
+    \item вычисление Фурье-образа $F[p(\xi, \varphi)](u, \varphi)$ и свертка с фильтром $F^{-1}[|u|]$
+    \item воспользовавшись теоремой Фурье о центральном сечении произвести подмену координат
+    \item вычислить обратную проекцию.
+    \todo{скорректировать}
+    \end{itemize}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  \end{column}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Метод Свертки и обратной проекции}
+  \includegraphics[width=0.8\textwidth]{fbp_img.png}
+  \\
+
+\end{frame}
 
 %\section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
 
