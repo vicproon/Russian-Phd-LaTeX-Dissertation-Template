@@ -6,13 +6,12 @@
 \begin{columns}[t]
 \column{.5\textwidth}
 \centering
-\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med}\\
-\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med_2}
-
+\includegraphics[height=0.35\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med}\\ \vspace{5pt}
+\includegraphics[height=0.55\textheight]{20180531_tooth_pb_slice}
 \column{.5\textwidth}
 \centering
-\includegraphics[height=0.5\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med_3}\\
-\includegraphics[height=0.5\textheight]{high_absorb_artifacts}
+\includegraphics[height=0.35\textheight]{../Dissertation/images/part2_img/tooth_artifacts_med_3}\\ \vspace{5pt}
+\includegraphics[height=0.55\textheight]{20180531_tooth_pb_vol}
 \end{columns}
 
 \end{frame}
@@ -23,12 +22,13 @@
     \item при прохождении через сильнопоглощающие включения большая часть излучения поглощается
     \item пиксели детектора имеют некоторый порог активации $\delta_{\mathrm I min}$
     \item если пришедшая интетсивность $\mathrm I_{j} \leq \delta_{\mathrm I min}$, показание детектора будет неотличимо от уровня шума
-    \item оптимизационная задача должна учитывать такие измерения особым образом
     \item при логарифмировании условие $\mathrm I_{j} \leq \delta_{\mathrm I min}$ переходит в 
     \begin{equation}
       \label{eq:thresh}
       p_j \geq \delta \left( = \ln \frac {\mathrm I_0}{\delta_{\mathrm I min}}\right)
     \end{equation}
+
+    \item оптимизационная задача должна учитывать такие измерения особым образом
   \end{itemize}
 \end{frame}
 
@@ -59,9 +59,8 @@
   \item оптимизация квадратичной функции на наборе линейных ограничений
   \item частный случай выпуклой оптимизации
   \item требует обращения матрицы $W^{\mathrm T} W$. 
-  \item для изображения 256х256 и 180 углов при использовании float64 такая матрица будет занимать порядка 32Гб
+  \item для изображения 256х256 и 180 углов при использовании float64 такая матрица будет занимать порядка 12Гб
 \end{itemize}
-
 
 \end{frame}
 
@@ -128,7 +127,7 @@
     \end{array}{ccc}
     $$
 
-    Так же возможно ввести ослабить ограничения, добавив переменные нежесткости $\xi$
+    Так же возможно ослабить ограничения, добавив переменные нежесткости $\xi$
 
   \end{column}
   \end{columns}
@@ -168,18 +167,32 @@
 \frametitle{Метод мягких неравенств}
 \framesubtitle{реконструкция экспериментальных данных}
 
-\begin{figure}
 \centering
 \vspace{-0.3cm}
-\begin{tabular}{@{}c@{}c}
-    \includegraphics[width=0.50\textwidth]{../Dissertation/images/part2_img/tooth_sino}
-&
-    \includegraphics[width=0.50\textwidth]{../Dissertation/images/part2_img/soft_ineq_pb_tooth}
-\\
-   \small a) & \small b)
-\end{tabular}
-  \caption{a --- Синограмма молочного зуба с включением из свинца. б --- результат восстановления методом мягких ограничений}
-\label{fig:tooth_sino_rec}
-\end{figure}
+\begin{columns}
 
+\begin{column}{0.53\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\textwidth]{zub_photo}
+    \caption{Образец: молочный зуб с включением из свинца}
+\end{figure}
+\end{column}
+
+\begin{column}{0.53\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\textwidth]{../Dissertation/images/part2_img/soft_ineq_pb_tooth}
+    \caption{результат восстановления методом мягких ограничений. Включение имеет постоянную интенсивнось.}
+\end{figure}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Выводы}
+\begin{itemize}
+  \item Метод с ограничениями позволяет улучшить качество восстановления в рамках предложенной модели
+  \item Метод барьерных функций показывает лучшее качество восстановления чем метод мягких ограничений или метод FBP на модельных данных
+  \item Метод мягких ограничений позволяет оценить локально-постоянную интенсивность сильнопоглощающего включения
+\end{itemize}
 \end{frame}
