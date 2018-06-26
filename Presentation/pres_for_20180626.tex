@@ -6,6 +6,7 @@
 \usepackage{cite,enumerate,float,indentfirst}
 \usepackage{comment}
 \usepackage{animate}
+\usepackage{appendixnumberbeamer}
 
 \graphicspath{{../images/}{images/}{../Dissertation/images}} 
 
@@ -121,6 +122,9 @@
 \large {Спасибо за внимание!}
 \end{frame}
 
+
+\appendix
+
 \begin{frame}
 \frametitle{Приложение 1}
 \framesubtitle{Полученные результаты}
@@ -142,5 +146,77 @@
 \end{itemize}
 \end{frame}
 
-\end{document} 
+\begin{frame}
+\frametitle{Приложение 2}
+\framesubtitle{Перевод в пространство БПХ}
+
+Перед тем как вести минимизацию с помощью БПХ, необходимо привести измерения в пространство результатов БПХ.
+\begin{enumerate}
+  \item восстановить соответствие углов проекции строчкам БПХ
+  \item растянуть измерения с использованем линейной интерполяции:
+\end{enumerate}
+
+\hspace*{2cm}
+  \begin{itemize}
+    \item \rom{1} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{2} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{3} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+    \item \rom{4} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{Сходимость FHT-SIRT при малом количестве углов}
+\textbf{Степень разрежения} --- доля отсутствующих углов полного БПХ-пространства
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.6\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/raw}
+    \caption{Без регуляризации}
+  \end{figure}
+  
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/medk}
+    \caption{Медианная регуляризация}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{Медианная регуляризация}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{slice_11}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{регуляризация по Тихонову}
+\includegraphics[width=0.8\textwidth]{tikhonov}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 4}
+\framesubtitle{Поведение ошибки, метод барьерных функций}
+\includegraphics[width=1\textwidth]{loss_by_iter}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 5}
+\framesubtitle{Гистограмма интенсивностей для zub pb}
+\includegraphics[width=1\textwidth]{../Dissertation/images/part2_img/pb_hist}
+\end{frame}
+
+\end{document}
 
