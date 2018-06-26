@@ -4,16 +4,15 @@
 \frametitle{Методы восстановления}
 \begin{tabular}{p{0.15\textwidth} | p{0.4\textwidth} | p{0.4\textwidth}}
 \hspace{-1cm} семейство & Интегральные & Алгебраические \\ \hline \vspace{10pt}
-\hspace{-1cm} подход & формула для обращения $R^{-1}[p(\varphi, \xi)](x,y)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline \vspace{10pt}
-\hspace{-1cm} представители & FBP & ART, SART, SIRT \\ \hline \vspace{10pt}
-\hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline \vspace{10pt}
-\hspace{-1cm} особенности & универсальность & возможность учета \hspace{1cm} модели объекта или измерительной схемы \\
-                          & требует полного набора проекционных углов, & \\ 
-                          & их равномерного распределения & \\
+\hspace{-1cm} подход & формула для обращения $R^{-1}[p(\varphi, \xi)](x,y)$ & Оптимизационная задача $\min_{f} \Norm{R[f] - p}$\\ \hline \vspace{5pt}
+\hspace{-1cm} представители & \footnotesize{Filtered Backprojection (FBP)} & \footnotesize{Algebraic Reconstruction Technique (ART),\ Simultaneous ART (SART),\ Simultaneous Iterative RT (SIRT) }\\ \hline \vspace{3pt}
+\hspace{-1cm} сложность & $O(N^2 \log N)$ & $O(N^3)$ \\ \hline \vspace{5pt}
+\hspace{-1cm} особенности & универсальность & возможность учета модели объекта или \\
+                          & требует полного набора проекционных углов, их равномерного распределения  & измерительной схемы \\ 
                           & чувствительны к шумам & \\
 \end{tabular}
 \\
-\vspace{5pt}
+\vspace{3pt}
 $N$ --- число ячеек детектора
 \end{frame}
 \endgroup
@@ -25,8 +24,8 @@ $N$ --- число ячеек детектора
   \begin{column}{0.6\textwidth}
     Основные шаги метода:
     \begin{itemize}
-    \item Фильтрация проекций: $\tilde{p}(\xi, \varphi) = F^{-1}[|u|F[p(\xi, \varphi)](u)$\\
-    $F[\cdot], F^{-1}[\cdot]$ --- прямое и обратное преобразования Фурье по $\xi$\\
+    \item Фильтрация проекций: $\tilde{p}(\xi, \varphi) = \mathscr F ^{-1}[|u| \mathscr F[p(\xi, \varphi)](u)]$\\
+    $\mathscr F[\cdot], \mathscr F ^{-1}[\cdot]$ --- прямое и обратное преобразования Фурье по $\xi$\\
     \vspace{10pt}
     \item Вычисление обратной проекции $f(x,y) = \int_0^\pi {\tilde{p} (x \cos\varphi + y \sin \varphi, \varphi) d\varphi}$
     \end{itemize}
@@ -128,15 +127,19 @@ $\hat{f} = f - \gamma \mathrm {W^{\varphi_k}}^{\mathrm T}(\mathrm W f - p)$ &
 $\hat{f} = f - \gamma \mathrm W^{\mathrm T}(\mathrm W f - p)$ \\
 \end{tabular}
 
-\vspace{0.5cm}
+\vspace{0.2cm}
 \raggedright
 \endgroup
 
 $\mathrm W_j$ --- столбец матрицы для луча $j$,\\
 $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$, $\mathrm W = \sum_\varphi {\mathrm W^\varphi}$
+\\
+\vspace{0.4cm}
 
-
+$\mathrm W f$ --- прямая проекция, \\
+$\mathrm W^{\mathrm T} f$ --- обратная проекция.
 \end{frame}
+
 
 \begin{frame}
 \frametitle{SIRT}
@@ -150,6 +153,7 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
 \animategraphics[loop,controls,width=\linewidth]{10}{anim/slice_}{1}{60}
 \end{column}
 \end{columns}
+%\endgroup
 \end{frame}
 
 \begin{frame}
@@ -160,7 +164,7 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
   \item качество восстановления
   \item возможность учета специфики эксперимента (регуляризация, ограничения)
 \end{itemize}
-\vspace{2cm}
+\vspace{1.5cm}
 
 Недостатки:\\
 \begin{itemize}
@@ -182,11 +186,11 @@ $\mathrm W^\varphi$ ---  матрица проекции на угол $\varphi$
   \end{itemize}
   \item \textbf{улушчение качества восстановления, борьба с артефактами}
     \begin{itemize}
-    \item beam hardening
-    \item \textbf{metal artifacts}
+    \item огрубление луче (beam hardening)
+    \item \textbf{артефакты из-за сильнопоглощающих включений (metal artifacts)}
     \end{itemize}
-  \item \textbf{улучшение возможностей интерпретации результатов восстановления}\\
-  \small{В условиях лабороторного спектра восстановленная характеристика является усреднением линейного коэффициента полгощения по спектру}
+  \item \textbf{учет спектра источника} \\
+  \small{В условиях лабороторного спектра восстановленная характеристика является усреднением линейного коэффициента полгощения по спектру. Это затрудняет интерпретацию результатов восстановления. }
 \end{itemize}
 
 \end{frame}
