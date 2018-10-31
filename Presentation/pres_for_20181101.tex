@@ -1,0 +1,231 @@
+\documentclass[12pt]{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{mathrsfs,amssymb,amsfonts,amsmath,mathtext}
+\usepackage{cite,enumerate,float,indentfirst}
+\usepackage{comment}
+\usepackage{animate}
+\usepackage{appendixnumberbeamer}
+\usepackage{natbib}
+
+\bibliographystyle{plainnat}
+\graphicspath{{../images/}{images/}{../Dissertation/images}} 
+
+% \usetheme[secheader]{Boadilla}
+% \usecolortheme{seahorse}
+
+\usetheme{Pittsburgh}
+\usecolortheme{seahorse}
+
+\beamertemplatenavigationsymbolsempty
+
+\newcommand{\todo}{\alert}
+\input{../common/data.tex}      % Основные сведения
+\input{../common/newnames.tex} 
+
+\setbeamercolor{footline}{fg=blue}
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+    % И. О. Фамилия, Организация кратко
+    \thesisAuthorShort, \thesisOrganizationShort
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+    % Город, 20XX
+    \thesisCity, \thesisYear
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{}%
+  Стр. \insertframenumber{} из \inserttotalframenumber \hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\setbeamertemplate{caption}[numbered]
+
+\newcommand{\itemi}{\item[\checkmark]}
+
+\newcommand{\rom}[1]{%
+  \textup{\uppercase\expandafter{\romannumeral#1}}%
+}
+
+\newcommand\Wider[2][3em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+      \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%\title{\small{Название презентации}}
+\title{\small{
+  Численные методы компьютерной томографии для объектов с областями существенно раличной поглощающей способности
+}}
+
+\vspace{50pt}%
+\author{\small{%
+\ \vspace{10pt} \\
+\emph{докладчик:}~\thesisAuthorShort\\ 
+\footnotesize{\thesisOrganizationShort (ГУ)}\\%
+\vspace{10pt}
+\emph{научный руководитель:}~\supervisorRegaliaShort~\supervisorFioShort \\
+\footnotesize{\supervisorOrganisationShort}
+}\\%
+\vspace{15pt}
+\thesisSpecialtyNumber \ \footnotesize{\thesisSpecialtyTitle }
+%\\
+\vspace{30pt}%
+% \thesisOrganization%
+\vspace{20pt}%
+}
+\date{\small{\thesisCity, \thesisYear}}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Задача восстановления в Компьютерной Томографии}
+\input{sect1_introduction.tex}
+
+\section{Подходы к решению задачи восстановления в КТ}
+\input{sect2_typical_recon_approaches.tex}
+
+\section{Вычислительно эффективный алгебраический метод восстановления FHT-SIRT}
+\input{sect3_fht-sirt.tex}
+
+\section{Подавление артефактов, вызванных наличием сильнопоглощающих включений}
+\input{sect4_metal-qp.tex}
+
+\section{Задача реконструкции при зондировании полихроматическим излучением}
+\input{sect5_polychome.tex}
+
+
+\begin{frame}
+\frametitle{Заключение}
+\begin{itemize}
+  \item Рассмотрена задача восстановления в компьютерной томографии, основные подходы к ее решению.
+  \item Построен асимптотически быстрый алгебраический метод FHT-SIRT, основанный на быстром преобразовании Хафа.
+  \item Представлен метод восстановления, позволяющий уменьшить негативное влияние сильнопоглощающих включений в объекте.
+  \item Предложен метод восстановления относительно концентраций различных элементов в объекте.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering
+%\vfill(5cm)
+\large {Спасибо за внимание!}
+\end{frame}
+
+\appendix
+
+\bibliography{../biblio/authorpapersVAK,../biblio/authorpapers,../biblio/authorconferences,../biblio/othercites,../biblio/sokolov}
+
+
+\begin{frame}
+\frametitle{Приложение 1}
+\framesubtitle{Полученные результаты}
+\begin{itemize}
+  \item Получен метод вычислительно эффективного вычисления транспонированного преобразования БПХ.
+  \item Построен вычислительно эффективный алгебраический метод восстановления измерений компьютерной томографии на основе БПХ.
+  \item Произведена адаптация метода для работы с данными реальных измерений. \item Произведено сравнение нового метода FHT-SIRT с традиционным SART
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 1}
+\framesubtitle{Полученные результаты}
+\begin{itemize}
+  \item Построен метод восстановления рентгеновской томографии для объектов, содержащих сильнопоглощающие включения. 
+  \item На реальных экспериментальных измерениях проведено исследование метода мягких ограничений, произведено сравнение с методом квадратичного программирования.
+  \item Построен алгоритм восстановления томографии в задаче зондирования полихроматическим излучением. 
+  \item Продемонстрированы результаты восстановления как синтетических, так и реальных экспериментальных данных
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 2}
+\framesubtitle{Перевод в пространство БПХ}
+
+Перед тем как вести минимизацию с помощью БПХ, необходимо привести измерения в пространство результатов БПХ.
+\begin{enumerate}
+  \item восстановить соответствие углов проекции строчкам БПХ
+  \item растянуть измерения с использованем линейной интерполяции:
+\end{enumerate}
+
+\hspace*{2cm}
+  \begin{itemize}
+    \item \rom{1} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{2} растяжение в $\frac 1 {\cos \alpha_i}$ раз
+    \item \rom{3} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+    \item \rom{4} растяжение в $\frac 1 {\sin \alpha_i}$ раз
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{Сходимость FHT-SIRT при малом количестве углов}
+\textbf{Степень разрежения} --- доля отсутствующих углов полного БПХ-пространства
+\begin{columns}[T,onlytextwidth]
+  \hspace*{-1cm}
+  \begin{column}{0.6\textwidth}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/raw}
+    \caption{Без регуляризации}
+  \end{figure}
+  
+  \end{column}
+  \begin{column}{0.55\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{../Dissertation/images/part1_img/medk}
+    \caption{Медианная регуляризация}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{Медианная регуляризация}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{slice_11}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 3}
+\framesubtitle{регуляризация по Тихонову}
+\includegraphics[width=0.8\textwidth]{tikhonov}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приложение 4}
+\framesubtitle{Поведение ошибки, метод барьерных функций}
+\includegraphics[width=1\textwidth]{loss_by_iter}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 5}
+\framesubtitle{Гистограмма интенсивностей для zub pb}
+\includegraphics[width=1\textwidth]{../Dissertation/images/part2_img/pb_hist}
+\end{frame}
+
+\end{document}
+

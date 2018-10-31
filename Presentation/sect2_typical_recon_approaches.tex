@@ -66,7 +66,7 @@ $N$ --- число ячеек детектора
 
     {
     \centering
-    $f(x,y) \rightarrow f_i,\ p(\varphi, \xi) \rightarrow p_j$
+    $f(x,y) \rightarrow f_{i(x, y)},\ p(\varphi, \xi) \rightarrow p_{j(\varphi, \xi)}$
     \par
     }
   \vspace{0.5cm}
@@ -109,7 +109,7 @@ $N$ --- число ячеек детектора
 \frametitle{Алгебраический метод}
 \framesubtitle{Решение СЛАУ}
 \centering
-$\Norm{p - \mathrm W f} \rightarrow \min\limits_f$
+$\Norm{p - \mathrm W f}^2 \rightarrow \min\limits_f$
 
 Оптимизационная задача решается итерационным методом, шаг итерации имеет вид
 \vspace{0.5cm}
@@ -144,16 +144,7 @@ $\mathrm W^{\mathrm T} p$ --- обратная проекция.
 \begin{frame}
 \frametitle{SIRT}
 \framesubtitle{Анимация процесса восстановления}
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.4\textwidth}
-\animategraphics[loop,controls,width=\linewidth]{10}{anim/frame_}{1}{60}
-\end{column}
-
-\begin{column}{0.6\textwidth}
-\animategraphics[loop,controls,width=\linewidth]{10}{anim/slice_}{1}{60}
-\end{column}
-\end{columns}
-%\endgroup
+\animategraphics[loop,controls,width=\linewidth]{10}{anim/composed_}{1}{60}
 \end{frame}
 
 \begin{frame}
@@ -186,7 +177,7 @@ $\mathrm W^{\mathrm T} p$ --- обратная проекция.
   \end{itemize}
   \item \textbf{улушчение качества восстановления, борьба с артефактами}
     \begin{itemize}
-    \item огрубление луче (beam hardening)
+    \item огрубление луча (beam hardening)
     \item \textbf{артефакты из-за сильнопоглощающих включений (metal artifacts)}
     \end{itemize}
   \item \textbf{учет спектра источника} \\

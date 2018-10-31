@@ -3,6 +3,7 @@ all:	talk
 talk:
 	pdf
 	ias
+	mipt
 	#	latexmk -pdf -pdflatex="xelatex %O %S" presentation.tex
 
 pdf:
@@ -10,6 +11,9 @@ pdf:
 
 ias:
 	latexmk -pdf -jobname=pres_for_20180626 pres_for_20180626.tex
+
+mipt:
+	latexmk -pdf -jobname=pres_for_20181101 pres_for_20181101
 
 # xedraft:
 # 	xelatex -ini "&pdflatex draft-preamble.tex\dump"

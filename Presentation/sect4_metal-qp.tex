@@ -135,8 +135,8 @@
 \endgroup
 
 \begin{frame}
-\frametitle{Метод мягких неравенств}
-\framesubtitle{фантом}
+\frametitle{Резульататы численного эксперимента}
+\framesubtitle{изображения подвержены гамма-коррекции}
 
 \begin{figure}
   \centering
@@ -148,20 +148,20 @@
 
 \end{frame}
 
-
 \begin{frame}
-\frametitle{Метод мягких неравенств}
-\framesubtitle{другая палитра}
+\frametitle{Резульататы численного эксперимента}
+\framesubtitle{изоюражения подвержены гамма-коррекции}
 
 \begin{figure}
   \centering
-  \vspace{-0.3cm}
-  \includegraphics[height=0.7\textheight]{qp_foursome_pink}
-  \caption{сравнение реконструкции различными методами}
+  % \vspace{-0.3cm}
+  \includegraphics[width=\textwidth]{qp_cs_x28}
+  \caption{кросс-секции реконструкций}
   \label{fig:sample}
 \end{figure}
 
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Метод мягких неравенств}
@@ -170,18 +170,22 @@
 \centering
 \vspace{-0.3cm}
 \begin{columns}
-
-\begin{column}{0.53\textwidth}
+\vspace{-1.2cm}
+\begin{column}{0.3\textwidth}
 \begin{figure}
-    \includegraphics[width=0.8\textwidth]{zub_photo}
+    \includegraphics[width=1\textwidth]{zub_photo}
     \caption{Образец: молочный зуб с включением из свинца}
 \end{figure}
 \end{column}
 
-\begin{column}{0.53\textwidth}
+\begin{column}{0.85\textwidth}
+\vspace{-0.3cm}
 \begin{figure}
-    \includegraphics[width=0.8\textwidth]{../Dissertation/images/part2_img/soft_ineq_pb_tooth}
-    \caption{результат восстановления методом мягких ограничений. Включение имеет постоянную интенсивнось.}
+    \centering
+    \includegraphics[width=\textwidth]{../Dissertation/images/part2_img/pb_big__fbp_vs_soft__cs__viridis} \\
+
+    \caption{Результаты восстановления}
+    \label{fig:fbp_vs_soft__zub}
 \end{figure}
 \end{column}
 \end{columns}
@@ -191,8 +195,9 @@
 \begin{frame}
 \frametitle{Выводы}
 \begin{itemize}
-  \item Метод с ограничениями позволяет улучшить качество восстановления в рамках предложенной модели
-  \item Метод барьерных функций показывает лучшее качество восстановления чем метод мягких ограничений или метод FBP на модельных данных
-  \item Метод мягких ограничений позволяет оценить локально-постоянную интенсивность сильнопоглощающего включения
+  \item Подход, основанный на ограничениях-неравенствах, позволяет улучшить качество восстановления в рамках предложенной модели
+  \item На модельных данных метод барьерных функций показывает лучшее, чем метод мягких ограничений или метод FBP, качество восстановления
+  \item На реальных экспериментальных измерениях показано, что метод мягких ограничений позволяет добиться локально-постоянной интенсивности сильнопоглощающего включения
+  \item Публикации \cite{ecms2015Chukalina, icmv2015Chukalina,trudi_isa_2018}
 \end{itemize}
 \end{frame}
